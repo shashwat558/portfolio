@@ -8,7 +8,7 @@ const Navbar = () => {
       fontFamily: '"Poppins", sans-serif',
       fontWeight: 700,
       fontStyle: 'normal'
-        }} className='w-full px-6 shadow-sm min	 border-[2px] py-6 fixed z-10'>
+        }} className='bg-white w-full px-6 shadow-md absolute border-t-0 border-l-0 border-r-0 border-b-[0.5px] py-6  z-10'>
           <nav className='flex justify-between items-center'>
             <a className='ml-5' href="/">
                 <span  className='text-[22px]'>Shashwat.dev</span>
