@@ -1,5 +1,11 @@
 import React from 'react'
 import HtmlAndCss from '../skillCards/HtmlAndCss'
+import TailwindCard from '../skillCards/TailwindCard'
+import MongoCard from '../skillCards/MongoCard'
+import Express from '../skillCards/Express'
+import ReactCard from '../skillCards/ReactCard'
+import NodeCard from '../skillCards/NodeCard'
+import JavascriptCard from '../skillCards/JavascriptCard'
 
 const SkillSet = () => {
   return (
@@ -7,12 +13,21 @@ const SkillSet = () => {
       fontFamily: '"Poppins", sans-serif',
       fontWeight: 700,
       fontStyle: 'normal'
-        }}>
-        <div className='w-screen h-screen text-center'>
-        <span className='text-3xl border-b-4'>Tech Stack</span>
-            <div className='md:flex justify-center items-center border-black'>
-              
+        }} className='bg-[#fcfbfb] mt-3'>
+        <div className='w-full h-screen text-center'>
+        <span className='text-4xl border-b-4'>Tech Stack</span>
+            <div className='md:flex flex-col gap-10 justify-center items-center gap-x-4 border-black mt-4 '>
+              <div className='flex max-sm:flex-col justify-center items-center gap-x-3'>
               <HtmlAndCss />
+              <JavascriptCard />
+              <TailwindCard />
+              </div>
+              <div className='flex justify-center items-center gap-x-3 mr-7'>
+              <MongoCard />
+              <Express />
+              <ReactCard />
+              <NodeCard />
+              </div>
                 
                 
             </div>
