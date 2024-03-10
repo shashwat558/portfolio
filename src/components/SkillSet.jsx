@@ -16,13 +16,13 @@ const SkillSet = () => {
         }} className='bg-[#fcfbfb] mt-3'>
         <div className='w-full h-screen text-center'>
         <span className='text-4xl border-b-4'>Tech Stack</span>
-            <div className='md:flex flex-col gap-10 justify-center items-center gap-x-4 border-black mt-4 '>
-              <div className='flex max-sm:p-8 justify-center items-center gap-x-3'>
+            <div className='md:flex flex-col gap-10 justify-center items-center gap-x-4 border-black mt-4'>
+              <div className='flex max-sm:p-8   cursor-pointer  justify-center items-center gap-x-3'>
               <HtmlAndCss />
               <JavascriptCard />
               <TailwindCard />
               </div>
-              <div className='flex justify-center items-center gap-x-3 mr-7'>
+              <div className='flex cursor-pointer  justify-center items-center gap-x-3 mr-7'>
               <MongoCard />
               <Express />
               <ReactCard />
