@@ -6,18 +6,20 @@ import React from 'react'
 import Intro from './components/Intro'
 import Navbar from './components/Navbar'
 import SkillSet from './components/SkillSet'
+import About from './components/About'
 
 
 function App() {
  
 
   return (
-    <div>
+    <div className='overflow-hidden box-border '>
      <Navbar />
      
      
      <Intro />
      <SkillSet />
+     <About />
     </div>
   )
 }

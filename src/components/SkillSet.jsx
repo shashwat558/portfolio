@@ -13,7 +13,7 @@ const SkillSet = () => {
       fontFamily: '"Poppins", sans-serif',
       fontWeight: 700,
       fontStyle: 'normal'
-        }} className='bg-[#fcfbfb] mt-3'>
+        }} className='bg-[#fcfbfb] mt-3  max-lg:h-[56vh]'>
         <div className='w-full h-screen text-center'>
         <span className='text-4xl border-b-4'>Tech Stack</span>
             <div className='md:flex flex-col gap-10 justify-center items-center gap-x-4 border-black mt-4'>
