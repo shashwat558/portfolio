@@ -2,7 +2,7 @@
 import React from 'react'
 import { motion } from "framer-motion";
 import Image from 'next/image';
-import { Typewriter } from 'react-simple-typewriter'
+
 import { Button } from './ui/button';
 import { Briefcase } from 'lucide-react';
 import { toast } from '@/lib/toast';

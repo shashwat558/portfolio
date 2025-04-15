@@ -25,7 +25,7 @@ const Toast = ({ toastType, message }: { toastType: string, message: string }) =
       transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
       className={`w-80 rounded-xl shadow-xl ${getBgColor()} relative overflow-hidden backdrop-blur-md mb-4`}
     >
-      {/* Shimmer + Blur */}
+      
       <motion.div
         initial={{ x: "100%" }}
         animate={{ x: "0%" }}
@@ -36,9 +36,9 @@ const Toast = ({ toastType, message }: { toastType: string, message: string }) =
         <div className="absolute inset-0 bg-white/5 backdrop-blur-2xl" />
       </motion.div>
 
-      {/* Toast Content */}
+      
       <div className="relative z-10 px-5 py-4 flex items-start gap-4">
-        {/* Icon */}
+        
         <motion.div
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
@@ -56,7 +56,7 @@ const Toast = ({ toastType, message }: { toastType: string, message: string }) =
           <Icon className="w-7 h-7 text-white relative" strokeWidth={2.5} />
         </motion.div>
 
-        {/* Text */}
+        
         <motion.div
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
@@ -71,7 +71,6 @@ const Toast = ({ toastType, message }: { toastType: string, message: string }) =
           </p>
         </motion.div>
 
-        {/* Close Button */}
         <motion.button
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
@@ -81,7 +80,6 @@ const Toast = ({ toastType, message }: { toastType: string, message: string }) =
         </motion.button>
       </div>
 
-      {/* Progress Bar */}
       <motion.div
         initial={{ scaleX: 0, transformOrigin: "left" }}
         animate={{ scaleX: 1 }}

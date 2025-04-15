@@ -18,15 +18,16 @@ const Experience = () => {
     <motion.div className="w-full flex flex-col items-center mt-5 gap-8">
       
    
-      <motion.h2
+      <motion.div
         initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.4 }}
-        className="text-2xl md:text-3xl font-bold tracking-tight text-center border-b-1 border-b-gray-300 "
+        className="text-2xl md:text-3xl font-bold tracking-tight text-center border-b-1 border-b-gray-300 w-1/2"
       >
-        Experience
-      </motion.h2>
+        <motion.h1 className='text-left  '>Experience</motion.h1>
+        
+      </motion.div>
 
       
       <motion.div className="relative group w-full md:w-4/5 lg:w-2/3 xl:w-1/2 

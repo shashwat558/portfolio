@@ -2,7 +2,7 @@
 
 import { CalendarIcon, HomeIcon, MailIcon, FolderKanban } from "lucide-react";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {motion} from "framer-motion";
 
 
@@ -84,7 +84,7 @@ const DATA = {
       },
       X: {
         name: "X",
-        url: "https://x.com/shashwatj26",
+        url: "https://x.com/shash>watj26",
         icon: Icons.x,
       },
       email: {
@@ -97,10 +97,31 @@ const DATA = {
 };
 
 export function NavDock() {
+  const [lastScroll, setLastScroll] = useState(0);
+  const [isVisible, setIsvisible] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScroll = window.scrollY;
+      if(currentScroll < lastScroll){
+        setIsvisible(true)
+
+      }else {
+        setIsvisible(false)
+      }
+
+      setLastScroll(currentScroll);
+
+    }
+    window.addEventListener('scroll', handleScroll)
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  },[lastScroll])
   return (
-    <motion.div  className="relative "  initial={{ opacity: 0, y: 20 }}  
-      animate={{ opacity: 1, y: 0 , rotate: [0, 5 ,0]}}    
-      transition={{ duration: 1 }}  >
+
+    <motion.div  className="sticky top-10 z-[100]"  initial={{ opacity: 0, y: 20 }}  
+      animate={{ opacity: isVisible ? 1: 0, y: isVisible ? 0: -100}}    
+      transition={{ duration: 0.3 }}  >
      
       <TooltipProvider >
         
