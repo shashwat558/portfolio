@@ -119,8 +119,8 @@ export function NavDock() {
   },[lastScroll])
   return (
 
-    <motion.div  className="sticky top-10 z-[100]"  initial={{ opacity: 0, y: 20 }}  
-      animate={{ opacity: isVisible ? 1: 0, y: isVisible ? 0: -100}}    
+    <motion.div  className="sticky top-10 z-[100]"  initial={{ opacity: 0, scale:0 }}  
+      animate={{ opacity: isVisible ? 1: 0, y: isVisible ? 0: -100, scale:1}}    
       transition={{ duration: 0.3 }}  >
      
       <TooltipProvider >

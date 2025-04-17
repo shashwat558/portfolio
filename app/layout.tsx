@@ -34,7 +34,7 @@ export default function RootLayout({
       <body
         className={`${funnelDisplay.className} antialiased dark:bg-zinc-900`}
       >
-        <ThemeProvider attribute={"class"} defaultTheme="system" >
+        <ThemeProvider attribute={"class"} defaultTheme="dark" >
         <NavDock />
         {children}
         

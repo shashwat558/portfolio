@@ -16,6 +16,8 @@ const Hero = () => {
                    gap-8 lg:gap-12 p-4 sm:p-8 md:p-10"
       >
         <motion.div 
+          initial= {{opacity:0, scale:0}}
+          animate= {{opacity:1, scale:1}}
           whileHover={{ rotateX: 25, rotateY: -10 }} 
           transition={{ duration: 0.4 }}
           style={{ translateZ: 100 }}

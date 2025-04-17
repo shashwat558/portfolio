@@ -2,6 +2,7 @@
 import React from 'react'
 import ProjectCard from './ui/projectCard'
 import {motion} from "framer-motion"
+import Link from 'next/link'
 
 const ProjectsArray = [
   {"projectName": "Buildtogether",
@@ -69,20 +70,24 @@ const ProjectsArray = [
 
 const Projects = () => {
   return (
-    <div className="w-full flex flex-col justify-center items-center mt-10">
-       <motion.div
+    <div className="w-full flex flex-col justify-center items-center mt-10 relative">
+      <motion.div
         initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.4 }}
-        className="text-2xl md:text-3xl font-bold tracking-tight text-center border-b-1 border-b-gray-300 w-1/2"
+        className="text-2xl md:text-3xl font-bold tracking-tight text-center border-b border-b-gray-300 w-1/2"
       >
-        <motion.h1 className='text-left  '>Projects</motion.h1>
-        
+        <motion.h1 className="text-left">Projects</motion.h1>
       </motion.div>
-      <div className="w-full lg:w-1/2 overflow-x-auto">
-     
-        <motion.div  className="flex gap-6 px-4 py-2 w-max mt-5 max-sm:flex-col">
+
+      <div className="w-full lg:w-1/2 overflow-x-hidden relative mt-5">
+        
+        <div className="pointer-events-none absolute top-0 bottom-0 left-0 w-10 bg-gradient-to-r from-white dark:from-black to-transparent z-10" />
+        <div className="pointer-events-none absolute top-0 bottom-0 right-0 w-10 bg-gradient-to-l from-white dark:from-black to-transparent z-10" />
+        <div className="pointer-events-none absolute left-0 right-0 bottom-0 h-10 bg-gradient-to-t from-white dark:from-black to-transparent z-10" />
+
+        <motion.div className="flex max-sm:block  gap-6 px-4 py-2 w-max  max-sm:h-[382px] overflow-hidden">
           {ProjectsArray.map((project, index) => (
             <ProjectCard
               key={index}
@@ -95,9 +100,15 @@ const Projects = () => {
             />
           ))}
         </motion.div>
+
+        <Link href="/projects">
+          <motion.button initial={{opacity:0, scale:0}} animate={{opacity: 1, scale:1}} transition={{duration: 0.3}} className="absolute bottom-10 left-1/2 transform -translate-x-1/2 border-[1.2px] rounded-full p-3 text-sm text-gray-100 bg-gradient-to-r from-gray-900 to-gray-800 shadow-[0_20px_50px_rgba(8,_112,_184,_0.2)] hover:scale-95 transition-all ease-in-out duration-300 cursor-pointer z-20">
+            More projects
+          </motion.button>
+        </Link>
       </div>
     </div>
-  );
-};
+  )
+}
 
 export default Projects;
