@@ -1,8 +1,8 @@
 
 import Experience from "@/components/Experience";
 import Hero from "@/components/Hero";
-import Projects from "@/components/Projects";
-import SendMessageComponent from "@/components/SendMessageComponent";
+import OtherNav from "@/components/OtherNav";
+
 
 
 
@@ -13,9 +13,8 @@ export default function Home() {
    <>
     <Hero />
     
-    <Experience />
-    <Projects />
-    <SendMessageComponent />
+    <OtherNav />
+    
     <Toaster />
     
    </>
