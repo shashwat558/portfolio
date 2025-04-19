@@ -79,7 +79,7 @@ const DATA = {
       },
       LinkedIn: {
         name: "LinkedIn",
-        url: "#",
+        url: "https://www.linkedin.com/in/shashwat-jain-8b2b3127a/",
         icon: Icons.linkedin,
       },
       X: {
@@ -89,7 +89,7 @@ const DATA = {
       },
       email: {
         name: "Send Email",
-        url: "#",
+        url: "https://mailto:jainshashwat528@gmail.com",
         icon: Icons.email,
       },
     },
