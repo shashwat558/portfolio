@@ -1,7 +1,7 @@
 
 import Hero from "@/components/Hero";
 import LifeUpdates from "@/components/LifeUpdates";
-import OpenSourceContributions from "@/components/OpenSource";
+// import OpenSourceContributions from "@/components/OpenSource";
 import OtherNav from "@/components/OtherNav";
 
 
@@ -16,7 +16,7 @@ export default function Home() {
     
     <OtherNav />
     <LifeUpdates />
-    <OpenSourceContributions />
+    {/* <OpenSourceContributions /> */}
     
     <Toaster />
     

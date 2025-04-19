@@ -1,7 +1,7 @@
 "use client"
 import React from 'react'
 import { motion } from "framer-motion";
-import Image from 'next/image';
+
 
 import { Button } from './ui/button';
 import { Briefcase } from 'lucide-react';
@@ -102,7 +102,7 @@ const Hero = () => {
                       <motion.p className={`${playFair.className} text-[40px] leading-14`} style={{
                         wordSpacing: "0.2rem"
                       }}>
-                         Hi, I'm Shashwat Jain{" "}  I'm a builder passionate about crafting thoughtful digital products.
+                         {`Hi, I'm Shashwat Jain${" "} I'm a builder passionate about crafting thoughtful digital products.`}
                       </motion.p>
 
                        <motion.p className="text-[26px] tracking-wide leading-7 md:leading-8 text-gray-700 dark:text-gray-300">
