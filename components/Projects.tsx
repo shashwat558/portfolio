@@ -72,23 +72,21 @@ const ProjectsArray = [
 
 const Projects = () => {
   return (
-    <div className="bg-transparent w-full flex justify-center items-center">
-  <div className="relative w-full md:w-4/5 lg:w-2/3 xl:w-1/2  ">
-    <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-72">
+   <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
   {ProjectsArray.map((project, index) => (
-    <RetroProjectCard
-      key={index}
-      projectName={project.projectName}
-      description={project.description}
-      techUsed={project.techUsed}
-      projectImage={project.ProjectImage}
-      liveLink={project.liveLink}
-      githubLink={project.githubLink}
-    />
+    <div key={index} className="aspect-[4/3]"> {/* Adjust as needed */}
+      <RetroProjectCard
+        projectName={project.projectName}
+        description={project.description}
+        techUsed={project.techUsed}
+        projectImage={project.ProjectImage}
+        liveLink={project.liveLink}
+        githubLink={project.githubLink}
+      />
+    </div>
   ))}
 </div>
-  </div>
-</div>
+
 
   );
 };

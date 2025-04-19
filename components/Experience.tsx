@@ -5,48 +5,39 @@ import ExperienceCard from './ui/experienceCard';
 
 const ExperinecArray = [
   {
-    "CompanyName": "Drema AI",
-    "role": "Web developer",
-    "description": "Contributed to multiple client projects, building responsive and scalable web applications using Next.js and React. Ensured clean, maintainable code and smooth user experiences.",
-    "logo": "/logo.png",
-    "timeline": "April 2025 - now"
-  }
+    CompanyName: "Drema AI",
+    role: "Web developer",
+    description: "Contributed to multiple client projects, building responsive and scalable web applications using Next.js and React. Ensured clean, maintainable code and smooth user experiences.",
+    logo: "/logo.png",
+    timeline: "April 2025 - now"
+  }, 
+  
 ];
+
+
 
 const Experience = () => {
   return (
-    <motion.div className="w-full flex flex-col items-center mt-5 gap-8">
+    <motion.div className="w-full min-h-[100px] flex flex-col items-center mt-10 gap-10 bg-[#0d0d0d] text-green-300 p-6 rounded-xl border-2 border-pink-500 ">
       
-   
       <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.4 }}
-        className="text-2xl md:text-3xl font-bold tracking-tight text-center border-b-1 border-b-gray-300 w-1/2"
-      >
-        <motion.h1 className='text-left  '>Experience</motion.h1>
+        className="relative group w-[100%] h-full flex flex-col gap-8 px-4 py-6 bg-[#111] border border-cyan-400 rounded-lg shadow-[0_0_8px_#0ff]">
+
+        <span className="absolute inset-y-0 left-0 w-1 bg-gradient-to-b from-transparent via-cyan-400 to-transparent opacity-70 group-hover:blur-sm overflow-x-scroll"></span>
+
         
-      </motion.div>
-
-      
-      <motion.div className="relative group w-full md:w-4/5 lg:w-2/3 xl:w-1/2 
-        flex flex-col lg:flex-row justify-center items-center gap-8 lg:gap-12 p-4 sm:p-8 md:p-10">
-
-        {ExperinecArray.map((item, index) => (
-          <ExperienceCard
-            key={index}
-            companyName={item.CompanyName}
-            description={item.description}
-            companyLogo={item.logo}
-            role={item.role}
-            timeline={item.timeline}
-          />
-        ))}
-
-       
-        <span className="absolute inset-y-0 left-0 w-px bg-gradient-to-b from-transparent via-cyan-400 to-transparent"></span>
-        <span className="absolute inset-y-0 left-0 w-px bg-gradient-to-b from-transparent via-cyan-400 to-transparent blur-sm h-[2px] opacity-0 group-hover:opacity-100"></span>
+        <div className="flex flex-col gap-2 w-full h-full overflow-x-scroll">
+          {ExperinecArray.map((item, index) => (
+            <ExperienceCard
+              key={index}
+              companyName={item.CompanyName ?? ""}
+              description={item.description ?? ""}
+              companyLogo={item.logo ?? ""}
+              role={item.role ?? ""}
+              timeline={item.timeline ?? ""}
+            />
+          ))}
+        </div>
       </motion.div>
     </motion.div>
   );

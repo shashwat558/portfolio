@@ -13,96 +13,8 @@
   --button-color: #aaaaaa;
 }
 
-.retro-computer {
-  width: 250px;
-  height: 250px;
-  background-color: #5f5f5f;
-  border: 2px solid var(--border-color);
-  border-radius: 8px;
-  box-shadow: 
-    rgba(0, 0, 0, 0.4) 0px 8px 16px,
-    inset rgba(255, 255, 255, 0.1) 0px 1px 0px,
-    inset rgba(255, 255, 255, 0.1) 0px -1px 0px;
-  margin: 1rem;
-  overflow: hidden;
-  position: relative;
-  transition: transform 0.3s ease;
-  font-family: 'VT323', monospace;
-}
 
-.retro-computer:hover {
-  transform: translateY(-4px);
-}
 
-/* Header Section */
-.retro-computer-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #333333;
-  padding: 5px 8px;
-  border-bottom: 2px solid #222222;
-}
-
-.retro-title {
-  color: #ffffff;
-  font-size: 14px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  flex: 1;
-}
-
-.title-text {
-  font-family: 'VT323', monospace;
-  letter-spacing: 1px;
-}
-
-.retro-buttons {
-  display: flex;
-  gap: 4px;
-}
-
-.retro-button {
-  width: 16px;
-  height: 16px;
-  font-size: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--button-color);
-  border: 1px outset #cccccc;
-  color: #000000;
-  cursor: pointer;
-  padding: 0;
-}
-
-.retro-button:active {
-  border-style: inset;
-}
-
-.retro-button.close {
-  background-color: #ff5555;
-}
-
-/* Screen Section */
-.retro-computer-screen {
-  background-color: var(--terminal-bg);
-  position: relative;
-  overflow: hidden;
-  height: 220px;
-  border: 4px inset #444444;
-}
-
-.crt-effect {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  overflow: hidden;
-  box-shadow: inset var(--screen-glow);
-}
 
 .crt-effect::before {
   content: "";
@@ -137,15 +49,8 @@
   z-index: 9;
 }
 
-.screen-content {
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
-  position: relative;
-  z-index: 1;
-}
 
-/* Image View */
+
 .image-view {
   height: 100%;
   display: flex;
@@ -180,50 +85,7 @@
   opacity: 1;
 }
 
-/* Description View */
-.description-view {
-  height: 100%;
-  padding: 12px;
-  display: flex;
-  flex-direction: column;
-  overflow-y: auto;
-  color: var(--terminal-text);
-}
 
-.terminal-text {
-  font-family: 'VT323', monospace;
-  font-size: 16px;
-  line-height: 1.4;
-  margin-bottom: 12px;
-}
-
-.tech-section {
-  margin-top: 10px;
-}
-
-.terminal-label {
-  font-family: 'VT323', monospace;
-  font-size: 16px;
-  color: #ffffff;
-  margin-bottom: 4px;
-}
-
-.tech-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-top: 6px;
-}
-
-.tech-badge {
-  background-color: rgba(255, 176, 0, 0.2);
-  border: 1px solid var(--terminal-text);
-  color: var(--terminal-text);
-  font-size: 12px;
-  padding: 2px 6px;
-  border-radius: 2px;
-  font-family: 'VT323', monospace;
-}
 
 /* Button Styles */
 .view-toggle-btn {

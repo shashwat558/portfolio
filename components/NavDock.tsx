@@ -1,6 +1,6 @@
 "use client";
 
-import { CalendarIcon, HomeIcon, MailIcon, FolderKanban } from "lucide-react";
+import { CalendarIcon, HomeIcon, MailIcon} from "lucide-react";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import {motion} from "framer-motion";
@@ -67,8 +67,8 @@ const Icons = {
 
 const DATA = {
   navbar: [
-    { href: "#", icon: HomeIcon, label: "Home" },
-    { href: "#", icon: FolderKanban, label: "Projects" },
+    { href: "/", icon: HomeIcon, label: "Home" },
+   
   ],
   contact: {
     social: {
@@ -84,7 +84,7 @@ const DATA = {
       },
       X: {
         name: "X",
-        url: "https://x.com/shash>watj26",
+        url: "https://x.com/shashwatj26",
         icon: Icons.x,
       },
       email: {
