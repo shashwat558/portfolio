@@ -89,7 +89,7 @@ const DATA = {
       },
       email: {
         name: "Send Email",
-        url: "https://mailto:jainshashwat528@gmail.com",
+        url: "mailto:jainshashwat528@gmail.com",
         icon: Icons.email,
       },
     },
@@ -133,6 +133,7 @@ export function NavDock() {
                   <Link
                     href={item.href}
                     aria-label={item.label}
+                    type="_blank"
                     className={cn(
                       buttonVariants({ variant: "ghost", size: "icon" }),
                       "size-12 rounded-full",

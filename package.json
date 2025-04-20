@@ -21,6 +21,7 @@
     "@types/mdx": "^2.0.13",
     "class-variance-authority": "^0.7.1",
     "cobe": "^0.6.3",
+    "lenis": "^1.2.3",
     "lucide-react": "^0.487.0",
     "motion": "^12.7.4",
     "next": "15.3.0",
