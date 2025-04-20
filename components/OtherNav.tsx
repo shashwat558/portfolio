@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 
 import {motion} from "framer-motion";
 import Projects from './Projects';
-import { Press_Start_2P } from 'next/font/google';
+import { Playfair_Display, Press_Start_2P } from 'next/font/google';
 import SendMessageComponent from './SendMessageComponent';
 import Experience from './Experience';
 
@@ -24,6 +24,11 @@ const retroFont = Press_Start_2P({
   subsets: ["latin"]
 })
 
+const playFair = Playfair_Display({
+  weight: "400",
+  subsets: ["latin"]
+})
+
 
 
 const options = [
@@ -40,7 +45,9 @@ const options = [
     {
         name: "blogs",
         icon:<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="Interface-Essential-Edit-Fill--Streamline-Pixel" height="50" width="50"><title>Read my blogs!</title><g><path d="M22.86 9.1425H24v12.57h-1.1400000000000001Z" fill="#000000" strokeWidth="0.75"></path><path d="M22.86 2.2874999999999996H24v3.4275h-1.1400000000000001Z" fill="#000000" strokeWidth="0.75"></path><path d="M21.7125 21.7125h1.1475v1.1475h-1.1475Z" fill="#000000" strokeWidth="0.75"></path><path d="M21.7125 5.715h1.1475v1.1400000000000001h-1.1475Z" fill="#000000" strokeWidth="0.75"></path><path d="M21.7125 1.1400000000000001h1.1475v1.1475h-1.1475Z" fill="#000000" strokeWidth="0.75"></path><path d="M20.572499999999998 6.855h1.1400000000000001v1.1475h-1.1400000000000001Z" fill="#000000" strokeWidth="0.75"></path><path d="M20.572499999999998 4.574999999999999h1.1400000000000001v1.1400000000000001h-1.1400000000000001Z" fill="#000000" strokeWidth="0.75"></path><path d="M2.2874999999999996 22.86h19.424999999999997V24H2.2874999999999996Z" fill="#000000" strokeWidth="0.75"></path><path d="M19.4325 8.0025h1.1400000000000001v1.1400000000000001h-1.1400000000000001Z" fill="#000000" strokeWidth="0.75"></path><path d="M19.4325 3.4275h1.1400000000000001V4.574999999999999h-1.1400000000000001Z" fill="#000000" strokeWidth="0.75"></path><path d="M18.285 0h3.4275v1.1400000000000001h-3.4275Z" fill="#000000" strokeWidth="0.75"></path><path d="M18.285 9.1425h1.1475v1.1400000000000001h-1.1475Z" fill="#000000" strokeWidth="0.75"></path><path d="M18.285 4.574999999999999h1.1475v1.1400000000000001h-1.1475Z" fill="#000000" strokeWidth="0.75"></path><path d="M18.285 2.2874999999999996h1.1475v1.1400000000000001h-1.1475Z" fill="#000000" strokeWidth="0.75"></path><path d="M17.145 10.2825h1.1400000000000001v1.1475h-1.1400000000000001Z" fill="#000000" strokeWidth="0.75"></path><path d="M17.145 5.715h1.1400000000000001v1.1400000000000001h-1.1400000000000001Z" fill="#000000" strokeWidth="0.75"></path><path d="M17.145 1.1400000000000001h1.1400000000000001v1.1475h-1.1400000000000001Z" fill="#000000" strokeWidth="0.75"></path><path d="M15.997499999999999 11.43h1.1475v1.1400000000000001h-1.1475Z" fill="#000000" strokeWidth="0.75"></path><path d="M15.997499999999999 6.855h1.1475v1.1475h-1.1475Z" fill="#000000" strokeWidth="0.75"></path><path d="M15.997499999999999 2.2874999999999996h1.1475v1.1400000000000001h-1.1475Z" fill="#000000" strokeWidth="0.75"></path><path d="M14.857499999999998 12.57h1.1400000000000001v1.1475h-1.1400000000000001Z" fill="#000000" strokeWidth="0.75"></path><path d="M14.857499999999998 8.0025h1.1400000000000001v1.1400000000000001h-1.1400000000000001Z" fill="#000000" strokeWidth="0.75"></path><path d="M14.857499999999998 3.4275h1.1400000000000001V4.574999999999999h-1.1400000000000001Z" fill="#000000" strokeWidth="0.75"></path><path d="M13.7175 11.43h1.1400000000000001v1.1400000000000001h-1.1400000000000001Z" fill="#000000" strokeWidth="0.75"></path><path d="M13.7175 9.1425h1.1400000000000001v1.1400000000000001h-1.1400000000000001Z" fill="#000000" strokeWidth="0.75"></path><path d="M13.7175 4.574999999999999h1.1400000000000001v1.1400000000000001h-1.1400000000000001Z" fill="#000000" strokeWidth="0.75"></path><path d="m12.57 12.57 -1.1400000000000001 0 0 -1.1400000000000001 -1.1475 0 0 -2.2874999999999996 -1.1400000000000001 0 0 5.715 5.715 0 0 -1.1400000000000001 -2.2874999999999996 0 0 -1.1475z" fill="#000000" strokeWidth="0.75"></path><path d="M12.57 10.2825h1.1475v1.1475h-1.1475Z" fill="#000000" strokeWidth="0.75"></path><path d="M12.57 5.715h1.1475v1.1400000000000001h-1.1475Z" fill="#000000" strokeWidth="0.75"></path><path d="M11.43 9.1425h1.1400000000000001v1.1400000000000001h-1.1400000000000001Z" fill="#000000" strokeWidth="0.75"></path><path d="M11.43 6.855h1.1400000000000001v1.1475h-1.1400000000000001Z" fill="#000000" strokeWidth="0.75"></path><path d="M10.2825 8.0025h1.1475v1.1400000000000001h-1.1475Z" fill="#000000" strokeWidth="0.75"></path><path d="M2.2874999999999996 1.1400000000000001h11.43v1.1475H2.2874999999999996Z" fill="#000000" strokeWidth="0.75"></path><path d="M1.1400000000000001 21.7125h1.1475v1.1475H1.1400000000000001Z" fill="#000000" strokeWidth="0.75"></path><path d="M1.1400000000000001 2.2874999999999996h1.1475v1.1400000000000001H1.1400000000000001Z" fill="#000000" strokeWidth="0.75"></path><path d="M0 3.4275h1.1400000000000001v18.285H0Z" fill="#000000" strokeWidth="0.75"></path></g></svg>,
-        component: <Projects />
+        component: <div className='w-full h-[50vh] flex justify-center items-center'>
+          <h1 className={`text-4xl ${playFair.className}`}>Some great blogs are coming....</h1>
+        </div>
 
     },
     {

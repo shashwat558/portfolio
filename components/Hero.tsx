@@ -102,16 +102,16 @@ const Hero = () => {
                       <motion.p className={`${playFair.className} text-[40px] leading-14`} style={{
                         wordSpacing: "0.2rem"
                       }}>
-                         {`Hi, I'm Shashwat Jain${" "} I'm a builder passionate about crafting thoughtful digital products.`}
+                         {`Hey there! I’m Shashwat — a builder who loves creating things that make a difference.`}
                       </motion.p>
 
                        <motion.p className="text-[26px] tracking-wide leading-7 md:leading-8 text-gray-700 dark:text-gray-300">
                         
-                        Currently diving deep into 
+                        Currently geeking out over  
                         <span className="text-gray-900 dark:text-gray-300 font-medium"> AI</span>, 
                         <span className="text-gray-900 font-medium dark:text-gray-300"> Web3</span>, and 
                         <span className="text-gray-900 font-medium dark:text-gray-300"> full-stack development</span>. 
-                        Focused on solving real problems with clean, scalable solutions.
+                        projects — love making things that work well and scale easily.
                       </motion.p>
                       <motion.h2 className="text-xl md:text-xl text-gray-900 dark:text-gray-400">
                       Full-stack Developer • AI Enthusiast • Web3 Explorer

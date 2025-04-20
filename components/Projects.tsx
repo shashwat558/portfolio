@@ -29,7 +29,7 @@ const ProjectsArray = [
     "techUsed": ["Nextjs", "openai", "puppeteerjs", "Langchain", "openai"],
     "liveLink": "/",
     "githubLink": "https://github.com/shashwat558/launchhawk",
-    "ProjectImage": "",
+  "ProjectImage": "/LaunchHawk.png",
     
 
   },
@@ -48,9 +48,9 @@ const ProjectsArray = [
     "projectName":"Chatterly",
     "description": "A realtime chat-app using redis as a database",
     "techUsed": ["nextjs", "redis"],
-    "liveLink": "https://chatterlyforu.vercel.app",
+    "liveLink": "",
     "githubLink": "https://github.com/shashwat558/chatterly",
-    "ProjectImage": "/khbespoke.png",
+    "ProjectImage": "",
     
         
 
