@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { Github, ExternalLink } from 'lucide-react';
-import './RetroProjectCard.css';
+import { motion } from "framer-motion";
+import { ExternalLink, Github } from "lucide-react";
+import TechTag from "../TechTags";
 
 interface RetroProjectCardProps {
   projectName: string;
@@ -17,100 +17,157 @@ const RetroProjectCard: React.FC<RetroProjectCardProps> = ({
   techUsed,
   projectImage,
   liveLink,
-  githubLink
+  githubLink,
 }) => {
-  // const [isHovered, setIsHovered] = useState(false);
-  const [showDescription, setShowDescription] = useState(false);
   
+  const cardVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+    },
+    hover: {
+      y: -8,
+      transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] },
+    },
+  };
+
+  const imageVariants = {
+    hover: {
+      scale: 1.05,
+      transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] },
+    },
+  };
+
+  /* ─────────────────── Component ─────────────────── */
   return (
-    <div 
-      className="w-[300px] h-[300px] bg-[#5f5f5f] border-2 border-[var(--border-color)] rounded-lg shadow-[0_8px_16px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.1),inset_0_-1px_0_rgba(255,255,255,0.1)] m-4 overflow-hidden relative transition-transform duration-300 ease-in-out font-['VT323'] hover:translate-y-[-4px] shrink-0"
-      
+    <motion.div
+      className="w-full max-w-sm h-full"
+      variants={cardVariants}
+      initial="hidden"
+      animate="visible"
+      whileHover="hover"
+      viewport={{ once: true, amount: 0.3 }}
     >
-      <div className="flex justify-between items-center bg-[#333333] px-2 py-1 border-b-2 border-[#222222]">
-        <div className="text-white text-[16px] overflow-hidden whitespace-nowrap text-ellipsis flex-1">
-          <span className="font-['VT323'] tracking-[1px]">{projectName}</span>
-        </div>
-        <div className="flex gap-1 ">
-          <button className="w-4 h-4 text-[10px] flex items-center justify-center bg-[var(--button-color)] border border-[outset] text-black cursor-pointer p-0 minimize">_</button>
-          <button className="w-4 h-4 text-[10px] flex items-center justify-center bg-[var(--button-color)] border border-[outset] text-black cursor-pointer p-0 maximize">□</button>
-          <button className="w-4 h-4 text-[10px] flex items-center justify-center bg-[var(--button-color)] border border-[outset] text-black cursor-pointer p-0 close">×</button>
-        </div>
-      </div>
-      
-      <div className="bg-[var(--terminal-bg)] relative overflow-hidden h-[220px] border-[4px] border-[#444444] ">
-        <div className="crt-effect absolute inset-0 overflow-hidden shadow-[inset_var(--screen-glow)]">
-          <div className="relative h-full w-full overflow-hidden z-1">
-            {showDescription ? (
-              <div className="h-full p-3 flex flex-col overflow-y-auto text-[var(--terminal-text)]">
-                <div className="font-['VT323'] text-[16px] leading-[1.4] mb-3">{description}</div>
-                <div className="mt-2">
-                  <div className="font-['VT323'] text-lg text-white mb-1">&gt; TECHNOLOGIES:</div>
-                  <div className="flex flex-wrap gap-2 mt-1">
-                    {techUsed.map((tech, index) => (
-                      <span key={index} className="bg-[rgba(255,176,0,0.2)] border border-[var(--terminal-text)] text-[var(--terminal-text)] text-[12px] px-1.5 py-0.5 rounded-xs font-['VT323']">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-                <button 
-                  className="font-['VT323'] bg-transparent border border-[var(--terminal-text)] text-[var(--terminal-text)] px-2 py-1 text-[14px] cursor-pointer mt-auto transition-all duration-200 ease-in-out self-center hover:bg-[#f0ca7a2a]"
-                  onClick={() => setShowDescription(false)}
+      <div
+        className="
+          relative z-10 flex flex-col p-6 h-full rounded-xl shadow-[0px_10px_1px_rgba(221,_221,_221,_1),_0_10px_20px_rgba(204,_204,_204,_1)] dark:shadow-[0px_0px_0px_1px_rgba(0,0,0,0.06),0px_1px_1px_-0.5px_rgba(0,0,0,0.06),0px_3px_3px_-1.5px_rgba(0,0,0,0.06),_0px_6px_6px_-3px_rgba(0,0,0,0.06),0px_12px_12px_-6px_rgba(0,0,0,0.06),0px_24px_24px_-12px_rgba(0,0,0,0.06)] border
+          bg-[#FFFBEB] border-[#F5EFD3]
+          dark:bg-zinc-900 dark:border-zinc-800
+          max-h-[30rem] 
+        "
+      >
+        
+        <motion.div
+          className="relative aspect-[16/9] mb-6 overflow-hidden rounded-lg group"
+          whileHover="hover"
+        >
+          <motion.img
+            src={projectImage}
+            alt={projectName}
+            className="w-full h-full object-cover"
+            variants={imageVariants}
+          />
+
+          
+          <motion.div
+            className="
+              absolute inset-0 opacity-0
+              bg-gradient-to-t from-black/70 via-black/20 to-transparent
+              group-hover:opacity-100
+              transition-opacity duration-300
+            "
+          >
+            <div className="absolute bottom-4 inset-x-4">
+              <motion.div
+                initial={{ y: 20, opacity: 0 }}
+                whileHover={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.3 }}
+                className="flex justify-center gap-4"
+              >
+                <motion.a
+                  href={liveLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="
+                    flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium shadow-md
+                    bg-white text-gray-900 hover:bg-gray-50
+                    dark:bg-zinc-800 dark:text-gray-100 dark:hover:bg-zinc-700
+                  "
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
-                  &lt; BACK TO IMAGE
-                </button>
-              </div>
-            ) : (
-              <div className="h-full flex justify-center items-center">
-                <div 
-                  className="project-image" 
-                  style={{ backgroundImage: `url(${projectImage})` }}
+                  <ExternalLink size={16} />
+                  Live Demo
+                </motion.a>
+
+                <motion.a
+                  href={githubLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="
+                    flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium shadow-md
+                    bg-gray-900 text-white hover:bg-gray-800
+                    dark:bg-zinc-700 dark:hover:bg-zinc-600
+                  "
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
-                  <div className="image-overlay">
-                    <button 
-                      className="view-toggle-btn"
-                      onClick={() => setShowDescription(true)}
-                    >
-                      VIEW DETAILS &gt;
-                    </button>
-                  </div>
-                </div>
-              </div>
-            )}
+                  <Github size={16} />
+                  Code
+                </motion.a>
+              </motion.div>
+            </div>
+          </motion.div>
+        </motion.div>
+
+        
+        <div className="flex flex-col flex-grow">
+          <h3 className="mb-3 font-sora text-xl font-semibold text-gray-900 dark:text-gray-100">
+            {projectName}
+          </h3>
+
+          <p className="mb-4 flex-grow font-inter leading-relaxed text-gray-600 dark:text-gray-400 line-clamp-3">
+            {description}
+          </p>
+
+          {/* Tech tags */}
+          <div className="mb-4 flex flex-wrap gap-2">
+            {techUsed.map((tech, index) => (
+              <TechTag key={index} tech={tech} />
+            ))}
+          </div>
+
+          {/* Permanent links */}
+          <div className="flex items-center justify-between border-t border-gray-100 pt-4 dark:border-zinc-800">
+            <motion.a
+              href={liveLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 text-sm font-medium text-indigo-600 hover:text-indigo-800 dark:text-indigo-400 dark:hover:text-indigo-300"
+              whileHover={{ x: 3 }}
+              transition={{ duration: 0.2 }}
+            >
+              <ExternalLink size={16} />
+              View Live
+            </motion.a>
+
+            <motion.a
+              href={githubLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 text-sm font-medium text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100"
+              whileHover={{ x: 3 }}
+              transition={{ duration: 0.2 }}
+            >
+              <Github size={16} />
+              Source Code
+            </motion.a>
           </div>
         </div>
       </div>
-      
-      <div className="retro-computer-footer">
-        <div className="command-prompt">
-          <span className="prompt-char">&gt;</span>
-          <span className="blinking-cursor">_</span>
-        </div>
-        <div className="retro-actions">
-          <a 
-            href={githubLink} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="retro-action-btn"
-            title="View on GitHub"
-          >
-            <Github className="retro-icon" />
-            <span>SOURCE</span>
-          </a>
-          <a 
-            href={liveLink} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="retro-action-btn"
-            title="View Live Project"
-          >
-            <ExternalLink className="retro-icon" />
-            <span>DEMO</span>
-          </a>
-        </div>
-      </div>
-    </div>
+    </motion.div>
   );
 };
 

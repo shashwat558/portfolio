@@ -72,9 +72,9 @@ const ProjectsArray = [
 
 const Projects = () => {
   return (
-   <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+   <div className="w-full xl:ml-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
   {ProjectsArray.map((project, index) => (
-    <div key={index} className="aspect-[4/3]"> {/* Adjust as needed */}
+    <div key={index} className="">
       <RetroProjectCard
         projectName={project.projectName}
         description={project.description}
