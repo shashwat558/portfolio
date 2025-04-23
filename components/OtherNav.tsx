@@ -58,41 +58,57 @@ const options = [
     }
 ]
 
+
+
 const OtherNav = () => {
     const [selected, setSelected] = useState<number | null>(1);
-    
-  return (
-    <motion.div className="w-full flex justify-center items-start py-6">
-  <motion.div
-    className="w-full max-w-screen-lg flex flex-col items-center gap-6 px-4"
-  >
-    {/* Icon List */}
-    <ul className="flex flex-wrap w-full justify-around gap-6">
-      {options.map((option, index) => (
-        <motion.li
-          key={index}
-          onClick={() => {
-            setSelected(index)
-            playShortClick()
-          }}
-          whileTap={{ scale: 0.9 }}
-          className={`cursor-pointer text-gray-800 dark:text-gray-200 transition duration-200 hover:scale-105 flex flex-col items-center justify-center gap-2 p-3  ${retroFont.className} ${selected !== null && selected === index ? 'border-2 dark:border-gray-500 border-gray-700 rounded-md' : ''}`}
+
+    return (
+        <motion.div 
+            className="w-full flex justify-center items-start py-6"
+            initial={{ opacity: 0, y: 50 }} 
+            animate={{ opacity: 1, y: 0 }} 
+            exit={{ opacity: 0, y: 50 }} 
+            transition={{ duration: 0.6, ease: 'easeOut' }}
         >
-          {option.icon}
-          <span className='text-[8px]'>{option.name}</span>
-        </motion.li>
-      ))}
-    </ul>
+            <motion.div
+                className="w-full max-w-screen-lg flex flex-col items-center gap-6 px-4"
+                initial={{ scale: 0.8 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 0.7, ease: 'easeOut' }}
+            >
+                {/* Icon List */}
+                <ul className="flex flex-wrap w-full justify-around gap-6">
+                    {options.map((option, index) => (
+                        <motion.li
+                            key={index}
+                            onClick={() => {
+                                setSelected(index);
+                                playShortClick();
+                            }}
+                            whileTap={{ scale: 0.9 }}
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{
+                                delay: index * 0.1, 
+                                type: 'spring', 
+                                stiffness: 200,
+                                damping: 20
+                            }}
+                            className={`cursor-pointer text-gray-800 dark:text-gray-200 transition duration-200 hover:scale-z-50 flex flex-col items-center justify-center gap-2 p-3  ${retroFont.className} ${selected !== null && selected === index ? 'scale-125' : ''}`}
+                        >
+                            {option.icon}
+                            <span className="text-[8px]">{option.name}</span>
+                        </motion.li>
+                    ))}
+                </ul>
 
-   
-    <div className="w-full flex justify-center items-center rounded-2xl p-4 sm:p-6">
-      {selected !== null && options[selected].component}
-    </div>
-  </motion.div>
-</motion.div>
+                <div className="w-full flex justify-center items-center rounded-2xl p-4 sm:p-6">
+                    {selected !== null && options[selected].component}
+                </div>
+            </motion.div>
+        </motion.div>
+    );
+};
 
-
-  )
-}
-
-export default OtherNav
+export default OtherNav;
