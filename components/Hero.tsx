@@ -76,7 +76,7 @@ const TextMagic = ({ text }: { text: string }) => {
           }}
           style={{ display: "inline-block", marginRight: "0.25rem" }}
         >
-          {word}
+          {word + "\u00A0"}
         </motion.span>
       ))}
     </motion.p>
@@ -154,59 +154,59 @@ const Hero = () => {
                         Full-stack Developer • AI Enthusiast • Web3 Explorer
                     </motion.h2>
 
-                      <motion.div 
-  className="flex items-center gap-4"
-  initial={{ opacity: 0, y: 50 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ type: "spring", stiffness: 100, damping: 10 }}
->
-  <motion.a 
-    href='mailto:jainshashwat528@gmail.com' 
-    target='_blank' 
-    whileHover={{ scale: 1.1, rotate: 3 }}
-    whileTap={{ scale: 0.95, rotate: -3 }}
-    transition={{ type: "spring", stiffness: 300 }}
-  >
-    <motion.button
-      className="text-highlight bg-highlight-50 px-4 rounded-lg py-2 text-md font-medium hover:bg-highlight-100 transition duration-300 ease-in-out shadow-sm hover:shadow flex items-center gap-2 text-blue-700 bg-blue-300 cursor-pointer"
-      whileHover={{
-        scale: 1.05,
-        boxShadow: "0px 0px 12px rgba(0, 0, 0, 0.3)",
-        textShadow: "0px 0px 8px rgba(59,130,246,0.8)",
-      }}
-      whileTap={{ scale: 0.95 }}
-    >
-      <Briefcase /> Hire Me
-    </motion.button>
-  </motion.a>
+                                    <motion.div 
+                className="flex items-center gap-4"
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ type: "spring", stiffness: 100, damping: 10 }}
+              >
+                <motion.a 
+                  href='mailto:jainshashwat528@gmail.com' 
+                  target='_blank' 
+                  whileHover={{ scale: 1.1, rotate: 3 }}
+                  whileTap={{ scale: 0.95, rotate: -3 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <motion.button
+                    className="text-highlight bg-highlight-50 px-4 rounded-lg py-2 text-md font-medium hover:bg-highlight-100 transition duration-300 ease-in-out shadow-sm hover:shadow flex items-center gap-2 text-blue-700 bg-blue-300 cursor-pointer"
+                    whileHover={{
+                      scale: 1.05,
+                      boxShadow: "0px 0px 12px rgba(0, 0, 0, 0.3)",
+                      textShadow: "0px 0px 8px rgba(59,130,246,0.8)",
+                    }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <Briefcase /> Hire Me
+                  </motion.button>
+                </motion.a>
 
-  <motion.a 
-    href="/shashwat-resume.pdf" 
-    download 
-    onClick={() => toast("Resume download started", "success")}
-    whileHover={{ scale: 1.1, rotate: -5 }}
-    whileTap={{ scale: 0.9 }}
-    transition={{ type: "spring", stiffness: 250 }}
-  >
-    <motion.button
-      className="border border-black px-4 py-2 rounded-md hover:bg-black hover:text-white transition-all"
-      whileHover={{
-        backgroundColor: "#000",
-        color: "#fff",
-        boxShadow: "0px 0px 10px rgba(0,0,0,0.5)",
-      }}
-    >
-      Resume
-    </motion.button>
-  </motion.a>
-</motion.div>
+                <motion.a 
+                  href="/shashwat-resume.pdf" 
+                  download 
+                  onClick={() => toast("Resume download started", "success")}
+                  whileHover={{ scale: 1.1, rotate: -5 }}
+                  whileTap={{ scale: 0.9 }}
+                  transition={{ type: "spring", stiffness: 250 }}
+                >
+                  <motion.button
+                    className="border dark:border-white border-black px-4 py-2 rounded-md hover:bg-black dark:text-white hover:text-white transition-all"
+                    whileHover={{
+                      backgroundColor: "#000",
+                      color: "#fff",
+                      boxShadow: "0px 0px 10px rgba(0,0,0,0.5)",
+                    }}
+                  >
+                    Resume
+                  </motion.button>
+                </motion.a>
+              </motion.div>
 
- </motion.div>
-                    
+          </motion.div>
+                              
 
-   </motion.div>
+            </motion.div>
 
-    </motion.div>
+              </motion.div>
   )
 }
 
