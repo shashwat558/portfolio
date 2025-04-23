@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import { motion, useAnimation, useInView } from "framer-motion";
 
 
-import { Button } from './ui/button';
+
 import { Briefcase } from 'lucide-react';
 import { toast } from '@/lib/toast';
 import { Playfair_Display } from 'next/font/google';
@@ -201,10 +201,10 @@ const Hero = () => {
   </motion.a>
 </motion.div>
 
-                    </motion.div>
+ </motion.div>
                     
 
-                   </motion.div>
+   </motion.div>
 
     </motion.div>
   )
