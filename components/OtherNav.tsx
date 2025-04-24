@@ -1,7 +1,7 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
-import {motion} from "framer-motion";
+import {motion, useAnimation, useInView} from "framer-motion";
 import Projects from './Projects';
 import { Playfair_Display, Press_Start_2P } from 'next/font/google';
 import SendMessageComponent from './SendMessageComponent';
@@ -59,17 +59,48 @@ const options = [
 ]
 
 
+const container = { hidden: {
+    opacity: 0,
+    y: 20,
+    scale: 0.95,
+    filter: "blur(6px)",
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    filter: "blur(0)",
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  },
+
+}
+
+
 
 const OtherNav = () => {
     const [selected, setSelected] = useState<number | null>(1);
+    const controls = useAnimation();
+    const ref = useRef(null);
+    const inView = useInView(ref,{once: true});
+
+    useEffect(() => {
+        if(inView){
+            controls.start("visible")
+        } else {
+            controls.start("hidden")
+        }
+    },[inView, controls])
 
     return (
         <motion.div 
             className="w-full flex justify-center items-start py-6"
-            initial={{ opacity: 0, y: 50 }} 
-            animate={{ opacity: 1, y: 0 }} 
-            exit={{ opacity: 0, y: 50 }} 
-            transition={{ duration: 0.6, ease: 'easeOut' }}
+            ref={ref}
+            variants={container}
+            initial="hidden"
+            animate={controls}
         >
             <motion.div
                 className="w-full max-w-screen-lg flex flex-col items-center gap-6 px-4"

@@ -148,3 +148,48 @@
 body {
   overflow-x: hidden;
 }
+
+/* Glitch effect — put in global CSS */
+.glitch {
+  position: relative;
+}
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  color: #f0f;
+  clip: rect(0, 900px, 0, 0);
+  animation: glitch 2s infinite ease-in-out;
+}
+.glitch::before {
+  top: -2px;
+  color: #0ff;
+}
+.glitch::after {
+  top: 2px;
+  color: #ff0;
+}
+
+@keyframes glitch {
+  0% {
+    clip: rect(42px, 9999px, 44px, 0);
+  }
+  20% {
+    clip: rect(12px, 9999px, 60px, 0);
+  }
+  40% {
+    clip: rect(92px, 9999px, 28px, 0);
+  }
+  60% {
+    clip: rect(22px, 9999px, 80px, 0);
+  }
+  80% {
+    clip: rect(82px, 9999px, 38px, 0);
+  }
+  100% {
+    clip: rect(42px, 9999px, 44px, 0);
+  }
+}

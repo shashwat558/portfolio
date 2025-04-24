@@ -1,5 +1,6 @@
 "use client"
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
+import {motion, useAnimation, useInView} from "framer-motion";
 
 
 import RetroProjectCard from './ui/projectCard/projectCard'
@@ -70,25 +71,73 @@ const ProjectsArray = [
 
 
 
+const containerVariants = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 1,
+      delayChildren: 0.2,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: {
+    opacity: 0,
+    x: -200,
+    skew: -15,
+    scale: 0.8,
+  },
+  visible: {
+    opacity: 1,
+    x: 0,
+    skew: 0,
+    scale: 1,
+    transition: {
+      type: "spring",
+      stiffness: 80,
+      damping: 14,
+    },
+  },
+};
+
+
 const Projects = () => {
+   const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "0px 0px -100px 0px" });
+  const controls = useAnimation();
+
+  useEffect(() => {
+    if (inView) {
+      controls.start("visible");
+    }
+  }, [inView, controls]);
   return (
-   <div className="w-full xl:ml-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
-  {ProjectsArray.map((project, index) => (
-    <div key={index} className="">
-      <RetroProjectCard
-        projectName={project.projectName}
-        description={project.description}
-        techUsed={project.techUsed}
-        projectImage={project.ProjectImage}
-        liveLink={project.liveLink}
-        githubLink={project.githubLink}
-      />
-    </div>
-  ))}
-</div>
-
-
+    <motion.div
+      className="w-full xl:ml-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6"
+       ref={ref}
+      variants={containerVariants}
+      initial="hidden"
+      animate={controls}
+    >
+      {ProjectsArray.map((project, index) => (
+        <motion.div  key={index}  variants={cardVariants}>
+          <RetroProjectCard
+            projectName={project.projectName}
+            description={project.description}
+            techUsed={project.techUsed}
+            projectImage={project.ProjectImage}
+            liveLink={project.liveLink}
+            githubLink={project.githubLink}
+          />
+        </motion.div>
+      ))}
+    </motion.div>
   );
 };
 
 export default Projects;
+
+
+
+

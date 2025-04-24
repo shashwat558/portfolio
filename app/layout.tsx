@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Funnel_Display} from "next/font/google";
 import "./globals.css";
-import { NavDock } from "@/components/NavDock";
+
 import { ThemeProvider } from "@/components/theme-provider";
+import PageProgress from "@/components/PageProgress";
 
 
 const funnelDisplay = Funnel_Display({
@@ -25,8 +26,9 @@ export default function RootLayout({
       <body
         className={`${funnelDisplay.className} antialiased bg-amber-50 dark:bg-[#29211d]`}
       >
+        <PageProgress />
         <ThemeProvider attribute={"class"} defaultTheme="light" >
-        <NavDock />
+        
         {children}
         
         </ThemeProvider>

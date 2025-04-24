@@ -62,18 +62,14 @@ const TextMagic = ({ text }: { text: string }) => {
       variants={container}
       initial="hidden"
       animate={controls}
-      className={`${playFair.className} text-[40px] leading-14 font-semibold flex flex-wrap`}
+      className={`${playFair.className} text-[40px] leading-14 font-semibold flex flex-wrap  text-black dark:text-white`}
       style={{ wordSpacing: "0.2rem" }}
     >
       {text.split(" ").map((word, index) => (
         <motion.span
           key={index}
           variants={child}
-          whileHover={{
-            scale: 1.2,
-            color: "#6EE7B7", 
-            transition: { type: "spring", stiffness: 300 },
-          }}
+         
           style={{ display: "inline-block", marginRight: "0.25rem" }}
         >
           {word + "\u00A0"}
