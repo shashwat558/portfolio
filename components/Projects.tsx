@@ -61,7 +61,37 @@ const ProjectsArray = [
     "techUsed": ["nextjs", "cloudfalre workers", "honojs"],
     "liveLink": "https://what-i-think.vercel.app",
     "githubLink": "https://github.com/shashwat558/what-i-think",
-    "ProjectImage": "/whatIThink.png",}
+    "ProjectImage": "/whatIThink.png",
+  },
+  {
+    "projectName": "Pokehub",
+    "description": "A pokemon card generator based on your github profile",
+    "techUsed": ["nextjs", "gemini api", "tailwind"],
+    "liveLink": "https://pokehub-fun.vercel.app",
+    "githubLink": "https://github.com/shashwat558/pokex",
+    "ProjectImage": "/pokehub.png"
+
+  }, 
+  {
+    "projectName": "BrightGrid landing page",
+    "description": "A professional landing page for brightgrid",
+    "techUsed": ["nextjs", "framer", "tailwind"],
+    "liveLink": "https://brightgrid.vercel.app/",
+    "githubLink": "https://github.com/shashwat558/Brightgrid",
+    "ProjectImage": "/bright.png"
+
+  },
+  {
+    "projectName": "RejectionGPT(Currently building)",
+    "description": "find what and what can get you rejected based on your resume and job description.",
+    "techUsed": ["nextjs", "langchain","openai","supabase", "tailwind"],
+    "liveLink": "/",
+    "githubLink": "https://github.com/shashwat558/rejectionGPT",
+    "ProjectImage": "/rejection.png"
+
+  },
+
+
     
        
 
