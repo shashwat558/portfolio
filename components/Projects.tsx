@@ -90,6 +90,15 @@ const ProjectsArray = [
     "ProjectImage": "/rejection.png"
 
   },
+  {
+    "projectName": "Lejob AI",
+    "description": "Lejob will find you the job roles based on your resume with the help of rag capabilities",
+    "techUsed": ["nextjs", "gemini", "langchain", "supabase"],
+    "liveLink": "https://getjobai-three.vercel.app",
+    "githubLink": "https://github.com/shashwat558/getjobai",
+    "ProjectImage": "/lejob.png",
+
+  }
 
 
     
