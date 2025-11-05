@@ -1,17 +1,19 @@
 "use client"
 
+import dynamic from "next/dynamic"
 import Navigation from "@/components/Navigation"
 import Hero from "@/components/Hero"
-import Experience from "@/components/Experience"
-import OpenSource from "@/components/OpenSource"
-import Projects from "@/components/Projects"
-import Skills from "@/components/Skills"
-import Contact from "@/components/Contact"
-import Footer from "@/components/Footer"
-import AudioPlayer from "@/components/AudioPlayer"
-import NowPlaying from "@/components/NowPlaying"
-import LiveCursor from "@/components/LiveCursor"
-import ThingsICanDo from "@/components/ThingsICanDo"
+
+// Lazy load below-the-fold components
+const Experience = dynamic(() => import("@/components/Experience"), { ssr: true })
+const OpenSource = dynamic(() => import("@/components/OpenSource"), { ssr: true })
+const Projects = dynamic(() => import("@/components/Projects"), { ssr: true })
+const Skills = dynamic(() => import("@/components/Skills"), { ssr: true })
+const Contact = dynamic(() => import("@/components/Contact"), { ssr: true })
+const Footer = dynamic(() => import("@/components/Footer"), { ssr: true })
+const AudioPlayer = dynamic(() => import("@/components/AudioPlayer"), { ssr: false })
+const NowPlaying = dynamic(() => import("@/components/NowPlaying"), { ssr: false })
+const ThingsICanDo = dynamic(() => import("@/components/ThingsICanDo"), { ssr: true })
 
 export default function Home() {
   const projects = [
@@ -112,7 +114,6 @@ export default function Home() {
       <Footer />
       
       <AudioPlayer songName="Veridis Quo - Daft Punk" />
-      <LiveCursor />
     </div>
   )
 }

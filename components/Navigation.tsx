@@ -2,15 +2,14 @@
 
 import { useEffect, useState } from "react"
 import ThemeToggle from "./ThemeToggle"
-import { useVisible } from "@/context/VisibleContext"
 import { motion } from "framer-motion"
 
 export default function Navigation() {
   const [visitorCount, setVisitorCount] = useState<number | null>(null)
-  const { visible, setVisible } = useVisible()
   const [mobileOpen, setMobileOpen] = useState(false)
 
   useEffect(() => {
+    // Defer visitor count fetch to not block initial render
     const fetchVisitorCount = async () => {
       try {
         const res = await fetch("/api/visitors")
@@ -21,10 +20,24 @@ export default function Navigation() {
       }
     }
 
-    fetchVisitorCount()
+    // Defer visitor count fetch to not block initial render
+    let timeoutId: ReturnType<typeof setTimeout> | number | undefined
+    
+    if (typeof window !== 'undefined' && 'requestIdleCallback' in window) {
+      timeoutId = requestIdleCallback(fetchVisitorCount, { timeout: 2000 })
+    } else {
+      timeoutId = setTimeout(fetchVisitorCount, 0)
+    }
     
     const interval = setInterval(fetchVisitorCount, 30000)
-    return () => clearInterval(interval)
+    return () => {
+      if (typeof window !== 'undefined' && 'requestIdleCallback' in window && typeof timeoutId === 'number') {
+        cancelIdleCallback(timeoutId)
+      } else if (timeoutId) {
+        clearTimeout(timeoutId)
+      }
+      clearInterval(interval)
+    }
   }, [])
 
   return (
@@ -41,24 +54,6 @@ export default function Navigation() {
             </div>
           )}
 
-
-          <button
-            type="button"
-            role="switch"
-            aria-checked={visible}
-            onClick={() => setVisible(!visible)}
-            className={`relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer items-center rounded-full border border-border transition-colors duration-200 focus:outline-none ${
-              visible ? "bg-foreground/80" : "bg-muted"
-            }`}
-            title="Show visiters"
-          >
-            <span
-              className={`pointer-events-none inline-block h-4 w-4 transform rounded-full bg-background shadow transition duration-200 ${
-                visible ? "translate-x-5" : "translate-x-1"
-              }`}
-            />
-          </button>
-          
           <ThemeToggle />
 
           

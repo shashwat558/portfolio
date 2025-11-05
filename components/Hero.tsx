@@ -5,7 +5,9 @@ import LiveAge from "@/components/LiveAge"
 
 const font = Fugaz_One({
   weight: "400",
-  subsets: ["latin"]
+  subsets: ["latin"],
+  display: "swap",
+  preload: true,
 })
 
 export default function Hero() {

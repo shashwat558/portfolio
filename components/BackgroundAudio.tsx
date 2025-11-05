@@ -40,17 +40,17 @@ export default function BackgroundAudio({
   const [volume, setVolumeState] = useState(initialVolume)
   const [currentTime, setCurrentTime] = useState(0)
   const [duration, setDuration] = useState(0)
+  const hasUserInteractedRef = useRef(false)
 
   useEffect(() => {
     const audio = audioRef.current
     if (!audio) return
 
-    // Preload audio without attempting to play (Firefox-safe)
+    // Set volume and preload
     try {
       audio.volume = volume
       audio.load()
     } catch (error) {
-      // Silently handle any preload errors
       console.error("Audio preload error:", error)
     }
 
@@ -87,11 +87,24 @@ export default function BackgroundAudio({
       }
     }
     
+    // Handle audio errors
+    const handleError = (e: Event) => {
+      console.error("Audio error:", e)
+      setIsPlaying(false)
+    }
+
+    // Handle when audio is ready to play
+    const handleCanPlay = () => {
+      // Audio is ready, but don't auto-play
+    }
+
     audio.addEventListener("play", updatePlayingState)
     audio.addEventListener("pause", updatePlayingState)
     audio.addEventListener("timeupdate", updateTime)
     audio.addEventListener("loadedmetadata", updateDuration)
     audio.addEventListener("durationchange", updateDuration)
+    audio.addEventListener("error", handleError)
+    audio.addEventListener("canplay", handleCanPlay)
 
     // Update time on interval for smoother progress
     const interval = setInterval(() => {
@@ -109,6 +122,8 @@ export default function BackgroundAudio({
         audio.removeEventListener("timeupdate", updateTime)
         audio.removeEventListener("loadedmetadata", updateDuration)
         audio.removeEventListener("durationchange", updateDuration)
+        audio.removeEventListener("error", handleError)
+        audio.removeEventListener("canplay", handleCanPlay)
         clearInterval(interval)
       } catch {
         // Prevent cleanup crashes
@@ -116,23 +131,50 @@ export default function BackgroundAudio({
     }
   }, [volume])
 
-  const togglePlay = () => {
+  const togglePlay = async () => {
     const audio = audioRef.current
-    if (!audio) return
+    if (!audio) {
+      console.error("Audio element not found")
+      return
+    }
 
     try {
       if (audio.paused) {
-        // Only play on explicit user interaction (Firefox-safe)
-        audio.play().catch((error) => {
-          // Silently handle play errors to prevent crashes
-          console.error("Audio play error:", error)
-        })
+        // Mark that user has interacted
+        hasUserInteractedRef.current = true
+        
+        // Ensure audio is ready
+        if (audio.readyState < 2) {
+          // Audio not ready yet, wait for canplay
+          audio.addEventListener("canplay", () => {
+            audio.play().catch((error) => {
+              console.error("Audio play error:", error)
+              setIsPlaying(false)
+            })
+          }, { once: true })
+        } else {
+          // Audio is ready, play it
+          const playPromise = audio.play()
+          if (playPromise !== undefined) {
+            playPromise
+              .then(() => {
+                // Play event will update state via updatePlayingState
+                console.log("Audio playing successfully")
+              })
+              .catch((error) => {
+                console.error("Audio play error:", error)
+                setIsPlaying(false)
+              })
+          }
+        }
       } else {
         audio.pause()
+        setIsPlaying(false)
       }
     } catch (error) {
-      // Prevent crashes from toggle
+      // Log error but don't crash
       console.error("Audio toggle error:", error)
+      setIsPlaying(false)
     }
   }
 
