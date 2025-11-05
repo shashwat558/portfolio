@@ -45,6 +45,9 @@ export default function BackgroundAudio({
     const audio = audioRef.current
     if (!audio) return
 
+    // Force immediate preload
+    audio.load()
+
     // Set volume
     audio.volume = volume
 
@@ -61,11 +64,23 @@ export default function BackgroundAudio({
       setDuration(audio.duration || 0)
     }
     
+    // Handle when audio is ready to play
+    const handleCanPlay = () => {
+      // Audio is ready, try to play if autoplay was prevented
+      if (audio.paused) {
+        audio.play().catch(() => {
+          // Ignore autoplay errors
+        })
+      }
+    }
+    
     audio.addEventListener("play", updatePlayingState)
     audio.addEventListener("pause", updatePlayingState)
     audio.addEventListener("timeupdate", updateTime)
     audio.addEventListener("loadedmetadata", updateDuration)
     audio.addEventListener("durationchange", updateDuration)
+    audio.addEventListener("canplay", handleCanPlay)
+    audio.addEventListener("canplaythrough", handleCanPlay)
 
     // Try to play audio
     const playAudio = async () => {
@@ -107,6 +122,8 @@ export default function BackgroundAudio({
       audio.removeEventListener("timeupdate", updateTime)
       audio.removeEventListener("loadedmetadata", updateDuration)
       audio.removeEventListener("durationchange", updateDuration)
+      audio.removeEventListener("canplay", handleCanPlay)
+      audio.removeEventListener("canplaythrough", handleCanPlay)
       document.removeEventListener("click", handleUserInteraction)
       document.removeEventListener("keydown", handleUserInteraction)
       document.removeEventListener("touchstart", handleUserInteraction)
@@ -145,7 +162,13 @@ export default function BackgroundAudio({
 
   return (
     <AudioContext.Provider value={contextValue}>
-      <audio ref={audioRef} src={src} loop={loop} preload="auto" />
+      <audio 
+        ref={audioRef} 
+        src={src} 
+        loop={loop} 
+        preload="auto"
+        crossOrigin="anonymous"
+      />
       {children}
     </AudioContext.Provider>
   )

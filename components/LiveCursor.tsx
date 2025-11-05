@@ -4,12 +4,17 @@
 import { useEffect, useState } from "react"
 import { motion } from "framer-motion";
 import { useVisible } from "@/context/VisibleContext";
+
+const BACKEND_URL = process.env.WS_BACKEND_URL || "";
+console.log(BACKEND_URL);
 export default function LiveCursor() {
     const [users, setUsers] = useState<Record<string, {x: number, y: number, city: string, country: string}> | null>(null);
     const [socket, setSocket] = useState<WebSocket | null>(null);
-    const { visible } = useVisible()
+    const { visible } = useVisible();
+    
     useEffect(() => {
-        const socket = new WebSocket("ws://localhost:3001");
+        const socket = new WebSocket(BACKEND_URL || "");
+        if(!socket) return;
         setSocket(socket);
 
         socket.onmessage = (e) => {
