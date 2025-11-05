@@ -1,73 +1,105 @@
+import Image from "next/image"
 
-import { FaGithub } from "react-icons/fa";
-
-type Contribution = {
-  repo: string;
-  url: string;
-  description: string;
-  tags?: string[];
-  date: string;
-};
+interface Contribution {
+  organization: string
+  logo: string
+  pullRequests: {
+    id: string
+    url: string
+    title: string
+    date: string
+    type: string
+  }[]
+}
 
 const contributions: Contribution[] = [
   {
-    repo: "vercel/next.js",
-    url: "https://github.com/vercel/next.js/pull/12345",
-    description: "Fixed a bug with image optimization in edge environments",
-    tags: ["Next.js", "Edge", "Optimization"],
-    date: "Mar 2025",
+    organization: "Dodo Payments",
+    logo: "https://github.com/dodopayments.png",
+    pullRequests: [
+      {
+        id: "221",
+        url: "https://github.com/dodopayments/billingsdk/pull/221",
+        title: "Added Stripe integration for Next.js",
+        date: "sep 2025",
+        type: "feature",
+      },
+      {
+        id: "191",
+        url: "https://github.com/dodopayments/billingsdk/pull/191",
+        title: "Added Stripe integration for Express framework",
+        date: "sep 2025",
+        type: "feature",
+      },
+      {
+        id: "137",
+        url: "https://github.com/dodopayments/billingsdk/pull/137",
+        title: "Added React.js template with useBilling hook",
+        date: "jul 2025",
+        type: "feature",
+      },
+      {
+        id: "124",
+        url: "https://github.com/dodopayments/billingsdk/pull/124",
+        title: "Added BillingSetting component with demo",
+        date: "jun 2025",
+        type: "feature",
+      },
+    ],
   },
   {
-    repo: "tailwindlabs/tailwindcss",
-    url: "https://github.com/tailwindlabs/tailwindcss/pull/6789",
-    description: "Improved dark mode handling in JIT mode",
-    tags: ["TailwindCSS", "JIT", "Dark Mode"],
-    date: "Jan 2025",
+    organization: "Cal.com",
+    logo: "https://github.com/calcom.png",
+    pullRequests: [
+      {
+        id: "21097",
+        url: "https://github.com/calcom/cal.com/pull/21097",
+        title: "Fix: add missing 'add' in profile username tip",
+        date: "may 2025",
+        type: "bug fix",
+      },
+    ],
   },
-  {
-    repo: "shadcn/ui",
-    url: "https://github.com/shadcn/ui/pull/222",
-    description: "Contributed a new component variation for Dialog",
-    tags: ["React", "Components", "Design System"],
-    date: "Dec 2024",
-  },
-];
+]
 
-export default function OpenSourceContributions() {
+export default function OpenSource() {
   return (
-    <div className="max-w-[950px] mx-auto px-6 py-10">
-      <h2 className="text-3xl font-semibold text-gray-800 mb-8">
-        Open Source Contributions
-      </h2>
-      <ul className="space-y-6">
-        {contributions.map((contribution, index) => (
-          <li
-            key={index}
-            className="border border-gray-200 rounded-xl p-5 hover:shadow-md transition"
-          >
-            <a
-              href={contribution.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-lg font-semibold text-blue-600 flex items-center gap-2"
-            >
-              <FaGithub className="text-black" /> {contribution.repo}
-            </a>
-            <p className="text-gray-600 mt-1">{contribution.description}</p>
-            <div className="flex flex-wrap gap-2 mt-2 text-sm">
-              {contribution.tags?.map((tag, i) => (
-                <span
-                  key={i}
-                  className="bg-gray-100 text-gray-700 px-2 py-1 rounded-md"
-                >
-                  {tag}
-                </span>
-              ))}
+    <section id="open-source" className="mb-20">
+      <h2 className="text-2xl font-bold mb-6 pb-2 border-b border-border">open source contributions</h2>
+
+      <div className="space-y-8">
+        {contributions.map((contribution) => (
+          <div key={contribution.organization} className="space-y-4">
+            <div className="flex items-center gap-3 mb-4">
+              <Image
+                src={contribution.logo}
+                alt={`${contribution.organization} logo`}
+                width={32}
+                height={32}
+                className="rounded-full"
+              />
+              <h3 className="text-lg font-semibold">{contribution.organization}</h3>
             </div>
-            <p className="text-sm text-gray-400 mt-2">{contribution.date}</p>
-          </li>
+            <ul className="space-y-3 ml-11">
+              {contribution.pullRequests.map((pr) => (
+                <li key={pr.id} className="text-sm">
+                  <span className="text-muted-foreground">{pr.date} ({pr.type}):</span>{" "}
+                  <a
+                    href={pr.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline hover:text-muted-foreground transition"
+                  >
+                    {pr.title}
+                  </a>{" "}
+                  <span className="text-xs text-muted-foreground">[#{pr.id}]</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         ))}
-      </ul>
-    </div>
-  );
+      </div>
+    </section>
+  )
 }
+

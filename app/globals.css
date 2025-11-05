@@ -149,6 +149,49 @@ body {
   overflow-x: hidden;
 }
 
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Smooth project expansion animation */
+.project-content {
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  max-height: 0;
+  opacity: 0;
+}
+
+.project-content.expanded {
+  max-height: 500px;
+  opacity: 1;
+}
+
+::view-transition-group(root) {
+  animation-timing-function: var(--expo-out);
+}
+
+::view-transition-new(root) {
+  mask: url('/batman4.png') center center / 0 no-repeat;
+  mask-origin: center center;
+  animation: scale 1.3s;
+  animation-fill-mode: both;
+}
+
+::view-transition-old(root),
+.dark::view-transition-old(root) {
+  animation: scale 1.3s;
+  animation-fill-mode: both;
+  z-index: -1;
+  transform-origin: center center;
+}
+
+@keyframes scale {
+  to {
+    mask-size: 525vmax;
+  }
+}
+
 /* Glitch effect — put in global CSS */
 .glitch {
   position: relative;
@@ -157,7 +200,7 @@ body {
 .glitch::after {
   content: attr(data-text);
   position: absolute;
-  left: 0;
+  left: 0;  
   width: 100%;
   overflow: hidden;
   color: #f0f;
@@ -193,3 +236,4 @@ body {
     clip: rect(42px, 9999px, 44px, 0);
   }
 }
+ 
