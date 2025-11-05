@@ -19,13 +19,19 @@ export default function AudioPlayer({ songName = "Now Playing" }: AudioPlayerPro
   
   const progress = duration > 0 ? (currentTime / duration) * 100 : 0
 
+  const handleClick = () => {
+    console.log("Play button clicked!")
+    togglePlay()
+  }
+
   return (
     <div className="fixed bottom-6 left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:bottom-10 md:right-10 z-50 bg-background/90 backdrop-blur-sm border border-border rounded-lg shadow-lg p-3 min-w-[280px] max-w-[calc(100vw-3rem)]">
       <div className="flex items-center gap-3 mb-2">
         <button
-          onClick={togglePlay}
+          onClick={handleClick}
           className="flex-shrink-0 w-10 h-10 rounded-full bg-muted hover:bg-muted/80 flex items-center justify-center transition-colors"
           aria-label={isPlaying ? "Pause" : "Play"}
+          type="button"
         >
           {isPlaying ? (
             <Pause className="w-5 h-5" />

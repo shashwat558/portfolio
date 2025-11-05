@@ -9,7 +9,7 @@ export default function Navigation() {
   const [mobileOpen, setMobileOpen] = useState(false)
 
   useEffect(() => {
-    // Defer visitor count fetch to not block initial render
+    
     const fetchVisitorCount = async () => {
       try {
         const res = await fetch("/api/visitors")
@@ -20,7 +20,7 @@ export default function Navigation() {
       }
     }
 
-    // Defer visitor count fetch to not block initial render
+    
     let timeoutId: ReturnType<typeof setTimeout> | number | undefined
     
     if (typeof window !== 'undefined' && 'requestIdleCallback' in window) {
@@ -70,8 +70,8 @@ export default function Navigation() {
             <a href="#open-source" className="hover:text-muted-foreground transition">
               open source
             </a>
-            <a href="#contact" className="hover:text-muted-foreground transition">
-              contact
+            <a href="#things-i-can-do" className="hover:text-muted-foreground transition">
+              Things I Can Do
             </a>
           </div>
 

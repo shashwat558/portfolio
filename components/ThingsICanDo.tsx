@@ -11,7 +11,7 @@ export default function ThingsICanDo() {
   ]
 
   return (
-    <section className="mb-20">
+    <section id="things-i-can-do" className="mb-20">
       <h2 className="text-2xl font-bold mb-6 pb-2 border-b border-border">things i can do</h2>
       <ul className="space-y-2 text-sm leading-relaxed">
         {items.map((text, idx) => (

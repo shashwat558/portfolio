@@ -27,7 +27,7 @@ export default function Hero() {
       <p className="text-base mb-8 leading-relaxed">
         i know
         <span className="bg-emerald-300 text-black px-1">
-          Next.js, TypeScript, PostgreSQL, Redis, and DevOps
+          Next.js, TypeScript, Node.js, PostgreSQL, Redis, and AI-powered workflows
         </span>
         
       </p>

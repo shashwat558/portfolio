@@ -41,29 +41,78 @@ export default function BackgroundAudio({
   const [currentTime, setCurrentTime] = useState(0)
   const [duration, setDuration] = useState(0)
   const hasUserInteractedRef = useRef(false)
+  const hasStartedPlayingRef = useRef(false)
+
+  
+  useEffect(() => {
+    const audio = audioRef.current
+    if (!audio) return
+
+ 
+    const startPlayingOnInteraction = async () => {
+      if (hasStartedPlayingRef.current || !audio.paused) return
+      
+      hasStartedPlayingRef.current = true
+      hasUserInteractedRef.current = true
+
+      try {
+      
+        if (audio.readyState < 2) {
+          const playWhenReady = () => {
+            audio.play().catch((error) => {
+              console.error("Failed to start audio on interaction:", error)
+            })
+          }
+          audio.addEventListener("canplay", playWhenReady, { once: true })
+          audio.load()
+        } else {
+        
+          await audio.play()
+        }
+      } catch (error) {
+        console.error("Error starting audio on interaction:", error)
+      }
+    }
+
+   
+    const events = ['click', 'touchstart', 'keydown', 'scroll', 'mousemove']
+    
+    events.forEach(eventType => {
+      document.addEventListener(eventType, startPlayingOnInteraction, { once: true, passive: true })
+    })
+
+    return () => {
+      events.forEach(eventType => {
+        document.removeEventListener(eventType, startPlayingOnInteraction)
+      })
+    }
+  }, [])
 
   useEffect(() => {
     const audio = audioRef.current
     if (!audio) return
 
-    // Set volume and preload
+   
     try {
       audio.volume = volume
-      audio.load()
+      
+      if (audio.readyState === 0) {
+        audio.load()
+      }
+      console.log("Audio initialized - readyState:", audio.readyState, "src:", audio.src)
     } catch (error) {
       console.error("Audio preload error:", error)
     }
 
-    // Update playing state
     const updatePlayingState = () => {
       try {
         setIsPlaying(!audio.paused)
       } catch {
-        // Prevent crashes from state updates
+        
       }
     }
     
-    // Update time
+ 
     const updateTime = () => {
       try {
         if (audio && !isNaN(audio.currentTime)) {
@@ -73,7 +122,7 @@ export default function BackgroundAudio({
           }
         }
       } catch {
-        // Prevent crashes from time updates
+        
       }
     }
     
@@ -83,19 +132,27 @@ export default function BackgroundAudio({
           setDuration(audio.duration)
         }
       } catch {
-        // Prevent crashes
+        
       }
     }
     
-    // Handle audio errors
+   
     const handleError = (e: Event) => {
+      const audio = e.target as HTMLAudioElement
       console.error("Audio error:", e)
+      console.error("Error code:", audio.error?.code)
+      console.error("Error message:", audio.error?.message)
       setIsPlaying(false)
     }
 
-    // Handle when audio is ready to play
+    
     const handleCanPlay = () => {
-      // Audio is ready, but don't auto-play
+      console.log("Audio can play - readyState:", audio.readyState)
+    }
+    
+    
+    const handleLoadedData = () => {
+      console.log("Audio loaded - readyState:", audio.readyState)
     }
 
     audio.addEventListener("play", updatePlayingState)
@@ -105,13 +162,13 @@ export default function BackgroundAudio({
     audio.addEventListener("durationchange", updateDuration)
     audio.addEventListener("error", handleError)
     audio.addEventListener("canplay", handleCanPlay)
+    audio.addEventListener("loadeddata", handleLoadedData)
 
-    // Update time on interval for smoother progress
     const interval = setInterval(() => {
       try {
         updateTime()
       } catch {
-        // Prevent interval crashes
+        
       }
     }, 100)
 
@@ -124,56 +181,71 @@ export default function BackgroundAudio({
         audio.removeEventListener("durationchange", updateDuration)
         audio.removeEventListener("error", handleError)
         audio.removeEventListener("canplay", handleCanPlay)
+        audio.removeEventListener("loadeddata", handleLoadedData)
         clearInterval(interval)
       } catch {
-        // Prevent cleanup crashes
+        
       }
     }
   }, [volume])
 
-  const togglePlay = async () => {
+  const togglePlay = () => {
     const audio = audioRef.current
     if (!audio) {
       console.error("Audio element not found")
       return
     }
 
-    try {
-      if (audio.paused) {
-        // Mark that user has interacted
-        hasUserInteractedRef.current = true
+    console.log("togglePlay called - paused:", audio.paused, "readyState:", audio.readyState)
+
+  
+    hasUserInteractedRef.current = true
+
+    if (audio.paused) {
+      
+      if (audio.readyState === 0) {
+        audio.load()
         
-        // Ensure audio is ready
-        if (audio.readyState < 2) {
-          // Audio not ready yet, wait for canplay
-          audio.addEventListener("canplay", () => {
-            audio.play().catch((error) => {
-              console.error("Audio play error:", error)
-              setIsPlaying(false)
-            })
-          }, { once: true })
-        } else {
-          // Audio is ready, play it
+        audio.addEventListener("canplay", () => {
+          console.log("Audio ready, attempting to play...")
           const playPromise = audio.play()
           if (playPromise !== undefined) {
             playPromise
               .then(() => {
-                // Play event will update state via updatePlayingState
-                console.log("Audio playing successfully")
+                console.log("Audio started playing")
               })
               .catch((error) => {
-                console.error("Audio play error:", error)
+                console.error("Failed to play audio:", error)
+                console.error("Audio readyState:", audio.readyState)
+                console.error("Audio error:", audio.error)
                 setIsPlaying(false)
               })
           }
-        }
-      } else {
-        audio.pause()
-        setIsPlaying(false)
+        }, { once: true })
+        return
       }
-    } catch (error) {
-      // Log error but don't crash
-      console.error("Audio toggle error:", error)
+
+      
+      const playPromise = audio.play()
+      
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => {
+            console.log("Audio started playing")
+            
+          })
+          .catch((error) => {
+            console.error("Failed to play audio:", error)
+            console.error("Audio readyState:", audio.readyState)
+            console.error("Audio error:", audio.error)
+            setIsPlaying(false)
+          })
+      } else {
+        
+        setIsPlaying(true)
+      }
+    } else {
+      audio.pause()
       setIsPlaying(false)
     }
   }
@@ -203,7 +275,6 @@ export default function BackgroundAudio({
         src={src} 
         loop={loop} 
         preload="auto"
-        crossOrigin="anonymous"
       />
       {children}
     </AudioContext.Provider>
