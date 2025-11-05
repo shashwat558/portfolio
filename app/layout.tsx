@@ -7,7 +7,7 @@ import Script from "next/script";
 
 import { VisibleProvider } from "@/context/VisibleContext";
 
-
+import { Analytics } from "@vercel/analytics/next"
 
 
 const funnelDisplay = Funnel_Display({
@@ -64,6 +64,7 @@ export default function RootLayout({
         </ThemeProvider>
         
         <Script src="/oneko.js" strategy="afterInteractive" />
+        <Analytics />
       </body>
     </html>
   );
