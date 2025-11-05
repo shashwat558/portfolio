@@ -12,8 +12,8 @@ const font = Fugaz_One({
 
 export default function Hero() {
   return (
-    <section id="about" className="mb-20">
-      <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-0">
+    <section className="mb-20">
+      <div className="flex flex-col md:flex-row md:items-center gap-1 md:gap-0">
       <h1 className="text-4xl md:text-5xl font-bold mb-6 flex items-center gap-2">
         <u className={font.className}>hi, i&apos;m shashwat.</u>
       </h1>

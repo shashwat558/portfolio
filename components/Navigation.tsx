@@ -41,7 +41,7 @@ export default function Navigation() {
   }, [])
 
   return (
-    <nav className="border-b border-border sticky top-0 z-50 bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <nav className=" border-b border-border sticky top-0 z-50 bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="max-w-full mx-auto px-6 py-4 flex items-center justify-between">
         
         <div className="text-2xl font-bold">shashwat.</div>
