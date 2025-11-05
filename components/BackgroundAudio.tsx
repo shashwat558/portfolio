@@ -45,32 +45,45 @@ export default function BackgroundAudio({
     const audio = audioRef.current
     if (!audio) return
 
-    // Force immediate preload
-    audio.load()
-
-    // Set volume
-    audio.volume = volume
+    // Preload audio without attempting to play (Firefox-safe)
+    try {
+      audio.volume = volume
+      audio.load()
+    } catch (error) {
+      // Silently handle any preload errors
+      console.error("Audio preload error:", error)
+    }
 
     // Update playing state
-    const updatePlayingState = () => setIsPlaying(!audio.paused)
+    const updatePlayingState = () => {
+      try {
+        setIsPlaying(!audio.paused)
+      } catch {
+        // Prevent crashes from state updates
+      }
+    }
     
     // Update time
     const updateTime = () => {
-      setCurrentTime(audio.currentTime)
-      setDuration(audio.duration || 0)
+      try {
+        if (audio && !isNaN(audio.currentTime)) {
+          setCurrentTime(audio.currentTime)
+          if (!isNaN(audio.duration)) {
+            setDuration(audio.duration)
+          }
+        }
+      } catch {
+        // Prevent crashes from time updates
+      }
     }
     
     const updateDuration = () => {
-      setDuration(audio.duration || 0)
-    }
-    
-    // Handle when audio is ready to play
-    const handleCanPlay = () => {
-      // Audio is ready, try to play if autoplay was prevented
-      if (audio.paused) {
-        audio.play().catch(() => {
-          // Ignore autoplay errors
-        })
+      try {
+        if (audio && !isNaN(audio.duration)) {
+          setDuration(audio.duration)
+        }
+      } catch {
+        // Prevent crashes
       }
     }
     
@@ -79,55 +92,27 @@ export default function BackgroundAudio({
     audio.addEventListener("timeupdate", updateTime)
     audio.addEventListener("loadedmetadata", updateDuration)
     audio.addEventListener("durationchange", updateDuration)
-    audio.addEventListener("canplay", handleCanPlay)
-    audio.addEventListener("canplaythrough", handleCanPlay)
-
-    // Try to play audio
-    const playAudio = async () => {
-      try {
-        await audio.play()
-        setIsPlaying(true)
-      } catch (error) {
-        console.log(error)
-        console.log("Autoplay prevented. Audio will play on user interaction.")
-      }
-    }
-
-    // Try to play when component mounts
-    playAudio()
-
-    // Also try to play on any user interaction
-    const handleUserInteraction = () => {
-      if (audio.paused) {
-        audio.play().catch(() => {
-          // Ignore errors
-        })
-      }
-      // Remove listeners after first interaction
-      document.removeEventListener("click", handleUserInteraction)
-      document.removeEventListener("keydown", handleUserInteraction)
-      document.removeEventListener("touchstart", handleUserInteraction)
-    }
-
-    document.addEventListener("click", handleUserInteraction)
-    document.addEventListener("keydown", handleUserInteraction)
-    document.addEventListener("touchstart", handleUserInteraction)
 
     // Update time on interval for smoother progress
-    const interval = setInterval(updateTime, 100)
+    const interval = setInterval(() => {
+      try {
+        updateTime()
+      } catch {
+        // Prevent interval crashes
+      }
+    }, 100)
 
     return () => {
-      audio.removeEventListener("play", updatePlayingState)
-      audio.removeEventListener("pause", updatePlayingState)
-      audio.removeEventListener("timeupdate", updateTime)
-      audio.removeEventListener("loadedmetadata", updateDuration)
-      audio.removeEventListener("durationchange", updateDuration)
-      audio.removeEventListener("canplay", handleCanPlay)
-      audio.removeEventListener("canplaythrough", handleCanPlay)
-      document.removeEventListener("click", handleUserInteraction)
-      document.removeEventListener("keydown", handleUserInteraction)
-      document.removeEventListener("touchstart", handleUserInteraction)
-      clearInterval(interval)
+      try {
+        audio.removeEventListener("play", updatePlayingState)
+        audio.removeEventListener("pause", updatePlayingState)
+        audio.removeEventListener("timeupdate", updateTime)
+        audio.removeEventListener("loadedmetadata", updateDuration)
+        audio.removeEventListener("durationchange", updateDuration)
+        clearInterval(interval)
+      } catch {
+        // Prevent cleanup crashes
+      }
     }
   }, [volume])
 
@@ -135,10 +120,19 @@ export default function BackgroundAudio({
     const audio = audioRef.current
     if (!audio) return
 
-    if (audio.paused) {
-      audio.play()
-    } else {
-      audio.pause()
+    try {
+      if (audio.paused) {
+        // Only play on explicit user interaction (Firefox-safe)
+        audio.play().catch((error) => {
+          // Silently handle play errors to prevent crashes
+          console.error("Audio play error:", error)
+        })
+      } else {
+        audio.pause()
+      }
+    } catch (error) {
+      // Prevent crashes from toggle
+      console.error("Audio toggle error:", error)
     }
   }
 
