@@ -8,6 +8,8 @@ import Script from "next/script";
 import { VisibleProvider } from "@/context/VisibleContext";
 
 import { Analytics } from "@vercel/analytics/next"
+import OnekoCat from "@/components/OnekoCat";
+import PreloadBatman from "@/components/PreloadBatman";
 
 
 const funnelDisplay = Funnel_Display({
@@ -54,6 +56,7 @@ export default function RootLayout({
       <body
         className={`${funnelDisplay.className} antialiased bg-white dark:bg-[#29211d] scroll-smooth`}
       >
+        <PreloadBatman />
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <BackgroundAudio src="/verdisquo.mp3" loop={true} volume={0.3}>
           <VisibleProvider>
@@ -63,7 +66,7 @@ export default function RootLayout({
           </BackgroundAudio>
         </ThemeProvider>
         
-        <Script src="/oneko.js" strategy="afterInteractive" />
+        <OnekoCat />
         <Analytics />
       </body>
     </html>
