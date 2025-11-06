@@ -1,7 +1,7 @@
 "use client"
 
 import dynamic from "next/dynamic"
-import Navigation from "@/components/Navigation"
+
 import Hero from "@/components/Hero"
 
 // Lazy load below-the-fold components
@@ -10,7 +10,7 @@ const OpenSource = dynamic(() => import("@/components/OpenSource"), { ssr: true 
 const Projects = dynamic(() => import("@/components/Projects"), { ssr: true })
 const Skills = dynamic(() => import("@/components/Skills"), { ssr: true })
 const Contact = dynamic(() => import("@/components/Contact"), { ssr: true })
-const AudioPlayer = dynamic(() => import("@/components/AudioPlayer"), { ssr: false })
+
 const NowPlaying = dynamic(() => import("@/components/NowPlaying"), { ssr: false })
 const ThingsICanDo = dynamic(() => import("@/components/ThingsICanDo"), { ssr: true })
 
@@ -97,7 +97,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <Navigation />
+      
 
       <main className="max-w-4xl mx-auto px-6 py-16">
         <Hero />
@@ -112,7 +112,7 @@ export default function Home() {
 
 
       
-      <AudioPlayer songName="Veridis Quo - Daft Punk" />
+      
     </div>
   )
 }
