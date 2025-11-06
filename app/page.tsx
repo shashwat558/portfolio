@@ -3,6 +3,7 @@
 import dynamic from "next/dynamic"
 
 import Hero from "@/components/Hero"
+import Navigation from "@/components/Navigation"
 
 // Lazy load below-the-fold components
 const Experience = dynamic(() => import("@/components/Experience"), { ssr: true })
@@ -98,7 +99,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       
-
+       <Navigation />
       <main className="max-w-4xl mx-auto px-6 py-16">
         <Hero />
         <NowPlaying />

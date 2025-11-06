@@ -10,7 +10,7 @@ import { VisibleProvider } from "@/context/VisibleContext";
 import { Analytics } from "@vercel/analytics/next"
 import OnekoCat from "@/components/OnekoCat";
 import Footer from "@/components/Footer";
-import Navigation from "@/components/Navigation";
+
 import AudioPlayer from "@/components/AudioPlayer";
 
 
@@ -54,16 +54,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <Script src="https://unpkg.com/oneko@latest/oneko.min.js" strategy="afterInteractive" />
       <body
         className={`${funnelDisplay.className} antialiased bg-white dark:bg-[#000000] scroll-smooth`}
       >
         
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           <BackgroundAudio src="/verdisquo.mp3" loop={true} volume={0.3}>
           <VisibleProvider>
-            <Navigation />
+            
             {children}
             <AudioPlayer songName="Veridis Quo - Daft Punk" />
             <Footer />
