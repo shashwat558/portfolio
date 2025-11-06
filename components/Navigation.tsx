@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react"
 import ThemeToggle from "./ThemeToggle"
 import { motion } from "framer-motion"
+import Link from "next/link"
 
 export default function Navigation() {
   const [visitorCount, setVisitorCount] = useState<number | null>(null)
@@ -41,7 +42,7 @@ export default function Navigation() {
   }, [])
 
   return (
-    <nav className=" border-b border-border sticky top-0 z-50 bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <nav className=" border-b border-border sticky top-0 z-50 bg-background/80 backdrop-blur supports-backdrop-filter:bg-background/60">
       <div className="max-w-full mx-auto px-6 py-4 flex items-center justify-between">
         
         <div className="text-2xl font-bold">shashwat.</div>
@@ -57,7 +58,7 @@ export default function Navigation() {
           <ThemeToggle />
 
           
-          <div className="hidden md:flex gap-8 text-sm">
+          <div className="hidden md:flex gap-8 text-sm items-center">
             <a href="#about" className="hover:text-muted-foreground transition">
               about
             </a>
@@ -73,6 +74,13 @@ export default function Navigation() {
             <a href="#things-i-can-do" className="hover:text-muted-foreground transition">
               Things I Can Do
             </a>
+            <Link prefetch   
+              href="/blog" 
+              className="px-4 py-1.5 rounded-full bg-primary text-primary-foreground font-medium hover:opacity-90 transition-opacity shadow-sm"
+            >
+              blogs
+            </Link>
+            
           </div>
 
           
@@ -91,7 +99,7 @@ export default function Navigation() {
 
       
       {mobileOpen && (
-        <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.2, ease: "easeInOut" }} exit={{ opacity: 0, y: -10 }} className="md:hidden px-6 pb-4 z-50 fixed top-20 left-0 w-full h-full bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.2, ease: "easeInOut" }} exit={{ opacity: 0, y: -10 }} className="md:hidden px-6 pb-4 z-50 fixed top-20 left-0 w-full h-full bg-background/80 backdrop-blur supports-backdrop-filter:bg-background/60">
           <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.2, ease: "easeInOut" }} exit={{ opacity: 0, y: -10 }} className="flex flex-col gap-3 text-sm border border-border rounded-lg p-3 bg-background">
             <a href="#about" onClick={() => setMobileOpen(false)} className="hover:text-muted-foreground transition">
               about
@@ -107,6 +115,13 @@ export default function Navigation() {
             </a>
             <a href="#contact" onClick={() => setMobileOpen(false)} className="hover:text-muted-foreground transition">
               contact
+            </a>
+            <a 
+              href="/blog" 
+              onClick={() => setMobileOpen(false)}
+              className="px-4 py-2 rounded-full bg-primary text-primary-foreground font-medium hover:opacity-90 transition-opacity shadow-sm text-center mt-2"
+            >
+              blogs
             </a>
           </motion.div>
         </motion.div>

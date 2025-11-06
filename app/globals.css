@@ -174,13 +174,13 @@ html {
 ::view-transition-new(root) {
   mask: url('/batman4.png') center center / 0 no-repeat;
   mask-origin: center center;
-  animation: scale 1.3s;
+  animation: scale var(--view-transition-duration, 1s), blur-transition var(--view-transition-duration, 1s);
   animation-fill-mode: both;
 }
 
 ::view-transition-old(root),
 .dark::view-transition-old(root) {
-  animation: scale 1.3s;
+  animation: scale var(--view-transition-duration, 1s), blur-transition var(--view-transition-duration, 1s);
   animation-fill-mode: both;
   z-index: -1;
   transform-origin: center center;
@@ -189,6 +189,15 @@ html {
 @keyframes scale {
   to {
     mask-size: 525vmax;
+  }
+}
+
+@keyframes blur-transition {
+  0%, 100% {
+    filter: blur(0px);
+  }
+  50% {
+    filter: blur(4px);
   }
 }
 
