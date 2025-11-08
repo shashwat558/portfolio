@@ -10,6 +10,7 @@ import { VisibleProvider } from "@/context/VisibleContext";
 import { Analytics } from "@vercel/analytics/next"
 import OnekoCat from "@/components/OnekoCat";
 import Footer from "@/components/Footer";
+import LiveCursor from "@/components/LiveCursor";
 
 import AudioPlayer from "@/components/AudioPlayer";
 
@@ -63,7 +64,7 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           <BackgroundAudio src="/verdisquo.mp3" loop={true} volume={0.3}>
           <VisibleProvider>
-            
+            <LiveCursor />
             {children}
             <AudioPlayer songName="Veridis Quo - Daft Punk" />
             <Footer />

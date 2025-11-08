@@ -4,10 +4,13 @@ import { useEffect, useState } from "react"
 import ThemeToggle from "./ThemeToggle"
 import { motion } from "framer-motion"
 import Link from "next/link"
+import { useVisible } from "@/context/VisibleContext"
+import { Eye, EyeOff } from "lucide-react"
 
 export default function Navigation() {
   const [visitorCount, setVisitorCount] = useState<number | null>(null)
   const [mobileOpen, setMobileOpen] = useState(false)
+  const { visible, setVisible } = useVisible()
 
   useEffect(() => {
     
@@ -54,6 +57,19 @@ export default function Navigation() {
               {visitorCount} visiting
             </div>
           )}
+
+          <button
+            onClick={() => setVisible(!visible)}
+            className="w-9 h-9 rounded-md border border-border bg-background flex items-center justify-center hover:bg-muted transition-colors"
+            aria-label={visible ? "Hide visitors" : "Show visitors"}
+            title={visible ? "Hide visitors" : "Show visitors"}
+          >
+            {visible ? (
+              <EyeOff className="w-4 h-4" />
+            ) : (
+              <Eye className="w-4 h-4" />
+            )}
+          </button>
 
           <ThemeToggle />
 
@@ -116,6 +132,25 @@ export default function Navigation() {
             <a href="#contact" onClick={() => setMobileOpen(false)} className="hover:text-muted-foreground transition">
               contact
             </a>
+            <button
+              onClick={() => {
+                setVisible(!visible)
+                setMobileOpen(false)
+              }}
+              className="flex items-center gap-2 hover:text-muted-foreground transition text-left"
+            >
+              {visible ? (
+                <>
+                  <EyeOff className="w-4 h-4" />
+                  <span>Hide visitors</span>
+                </>
+              ) : (
+                <>
+                  <Eye className="w-4 h-4" />
+                  <span>Show visitors</span>
+                </>
+              )}
+            </button>
             <a 
               href="/blog" 
               onClick={() => setMobileOpen(false)}
