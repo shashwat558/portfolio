@@ -35,6 +35,9 @@ export default function Hero() {
         trying to learn and implement as much as possible.
       </p>
 
+      <p className="text-base mb-8 leading-relaxed">
+        i like to build and just do things.
+      </p>
 
       <div className="mb-8">
         <p className="font-semibold mb-3">
