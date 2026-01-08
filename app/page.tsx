@@ -25,6 +25,13 @@ export default function Home() {
     live: "https://rejectiongpt.shashwatt.tech",
     source: "https://github.com/shashwat558/RejectionGPT",
   },
+    {
+    name: "Chatterly",
+    description: "A real-time chat app using Redis as a database.",
+    tech: ["Next.js", "Redis"],
+    live: "https://chatterly.shashwatt.tech/",
+    source: "https://github.com/shashwat558/chatterly",
+  },
   {
     name: "Proddy",
     description:
@@ -64,13 +71,7 @@ export default function Home() {
     live: "https://buildtogether.vercel.app",
     source: "https://github.com/shashwat558/buildtogether",
   },
-  {
-    name: "Chatterly",
-    description: "A real-time chat app using Redis as a database.",
-    tech: ["Next.js", "Redis"],
-    live: "View Live",
-    source: "Source Code",
-  },
+  
   {
     name: "what-i-think",
     description: "My personal blog site built with modern web tools.",
