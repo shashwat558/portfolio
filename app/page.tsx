@@ -18,6 +18,7 @@ const ThingsICanDo = dynamic(() => import("@/components/ThingsICanDo"), { ssr: t
 
 export default function Home() {
   const projects = [
+
     {
       name: "RejectionGPT",
       description:
@@ -72,6 +73,7 @@ export default function Home() {
       source: "https://github.com/shashwat558/buildtogether",
     },
   ];
+
 
   const experience = [
     {

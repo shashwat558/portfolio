@@ -4,6 +4,7 @@ export default function Contact() {
       <h2 className="text-2xl font-bold mb-6 pb-2 border-b border-border">let&apos;s connect</h2>
       <p className="text-base mb-6 text-muted-foreground">
         i&apos;m always open to interesting conversations and collaborations. feel free to reach out!
+
       </p>
       <div className="space-y-2 text-sm">
         <p>
