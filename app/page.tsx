@@ -1,6 +1,7 @@
 "use client"
 
 import dynamic from "next/dynamic"
+import Image from "next/image"
 
 import Hero from "@/components/Hero"
 import Navigation from "@/components/Navigation"
@@ -17,75 +18,60 @@ const ThingsICanDo = dynamic(() => import("@/components/ThingsICanDo"), { ssr: t
 
 export default function Home() {
   const projects = [
-  {
-    name: "RejectionGPT",
-    description:
-      "Find out what can get you rejected based on your resume and job description using AI insights.",
-    tech: ["Next.js", "LangChain", "OpenAI", "Supabase", "TailwindCSS"],
-    live: "https://rejectiongpt.shashwatt.tech",
-    source: "https://github.com/shashwat558/RejectionGPT",
-  },
-  {
-    name: "Proddy",
-    description:
-      "Web-scrapes Myntra product reviews and gives AI-summarized feedback to help users make quick purchase decisions.",
-    tech: ["Next.js", "Gemini", "Puppeteer.js", "LangChain", "OpenAI"],
-    live: "View Live",
-    source: "https://github.com/shashwat558/know-your-product",
-  },
-  {
-    name: "Lejob AI",
-    description:
-      "Lejob helps you find the most suitable job roles based on your resume using RAG-powered AI search.",
-    tech: ["Next.js", "Gemini", "LangChain", "Supabase"],
-    live: "https://getjobai-three.vercel.app/",
-    source: "https://github.com/shashwat558/getjobai",
-  },
-  {
-    name: "Pokehub",
-    description:
-      "A Pokémon card generator based on your GitHub profile data.",
-    tech: ["Next.js", "Gemini API", "TailwindCSS"],
-    live: "View Live",
-    source: "Source Code",
-  },
-  {
-    name: "Full-stack website for a fashion brand",
-    description: "A full-stack, beautiful website for a fashion brand.",
-    tech: ["React.js", "Firebase"],
-    live: "View Live",
-    source: "Source Code",
-  },
-  {
-    name: "Buildtogether",
-    description:
-      "A platform where students can showcase their projects, discover what their peers are building, and collaborate with them.",
-    tech: ["Next.js", "WebSockets", "Redis", "Prisma"],
-    live: "https://buildtogether.vercel.app",
-    source: "https://github.com/shashwat558/buildtogether",
-  },
-  {
-    name: "Chatterly",
-    description: "A real-time chat app using Redis as a database.",
-    tech: ["Next.js", "Redis"],
-    live: "View Live",
-    source: "Source Code",
-  },
-  {
-    name: "what-i-think",
-    description: "My personal blog site built with modern web tools.",
-    tech: ["Next.js", "Cloudflare Workers", "Hono.js"],
-    live: "https://what-i-think.vercel.app",
-    source: "https://github.com/shashwat558/what-i-think",
-  },
-  {
-    name: "BrightGrid landing page",
-    description: "A professional and modern landing page for BrightGrid.",
-    tech: ["Next.js", "Framer Motion", "TailwindCSS"],
-    live: "https://brightgrid.vercel.app",
-    source: "https://github.com/shashwat558/Brightgird",
-  },
-];
+    {
+      name: "RejectionGPT",
+      description:
+        "Find out what can get you rejected based on your resume and job description using AI insights.",
+      tech: ["Next.js", "LangChain", "OpenAI", "Supabase", "TailwindCSS"],
+      live: "https://rejectiongpt.shashwatt.tech",
+      source: "https://github.com/shashwat558/RejectionGPT",
+    },
+    {
+      name: "Chatterly",
+      description: "A real-time chat app with end-to-end encryption, video calling, and high-performance messaging using Redis.",
+      tech: ["Next.js", "Redis"],
+      live: "View Live",
+      source: "Source Code",
+    },
+    {
+      name: "Background job queue worker system",
+      description: "A robust background job processing system built with FastAPI and Redis for handling asynchronous tasks and distributed work queues.",
+      tech: ["FastAPI", "PostgreSQL", "Redis", "Python"],
+      live: "Source Code",
+      source: "https://github.com/shashwat558/background-job-queue",
+    },
+    {
+      name: "Proddy",
+      description:
+        "Web-scrapes Myntra product reviews and gives AI-summarized feedback to help users make quick purchase decisions.",
+      tech: ["Next.js", "Gemini", "Puppeteer.js", "LangChain", "OpenAI"],
+      live: "View Live",
+      source: "https://github.com/shashwat558/know-your-product",
+    },
+    {
+      name: "builderOS",
+      description: "An all-in-one directory for students and builders to find opportunities, grants, benefits, hackathons, resources, and tools.",
+      tech: ["Next.js", "TailwindCSS", "Supabase"],
+      live: "https://build-os-one.vercel.app",
+      source: "Source Code",
+    },
+    {
+      name: "Lejob AI",
+      description:
+        "Lejob helps you find the most suitable job roles based on your resume using RAG-powered AI search.",
+      tech: ["Next.js", "Gemini", "LangChain", "Supabase"],
+      live: "https://getjobai-three.vercel.app/",
+      source: "https://github.com/shashwat558/getjobai",
+    },
+    {
+      name: "Buildtogether",
+      description:
+        "A platform where students can showcase their projects, discover what their peers are building, and collaborate with them.",
+      tech: ["Next.js", "WebSockets", "Redis", "Prisma"],
+      live: "https://buildtogether.vercel.app",
+      source: "https://github.com/shashwat558/buildtogether",
+    },
+  ];
 
   const experience = [
     {
@@ -98,9 +84,18 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      
-       <Navigation />
-      <main className="max-w-4xl mx-auto px-6 py-16">
+
+      <Navigation />
+      <main className="max-w-4xl mx-auto px-6 py-16 border-l-1 border-r-1">
+        <div className="w-full h-32 md:h-48 lg:h-64 relative mb-8 rounded-lg overflow-hidden">
+          <Image
+            src="/banner3.png"
+            alt="Banner"
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
         <Hero />
         <NowPlaying />
         <Experience experience={experience} />
@@ -112,8 +107,8 @@ export default function Home() {
       </main>
 
 
-      
-      
+
+
     </div>
   )
 }

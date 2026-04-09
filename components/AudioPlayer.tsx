@@ -25,7 +25,7 @@ export default function AudioPlayer({ songName = "Now Playing" }: AudioPlayerPro
   }
 
   return (
-    <div className="fixed bottom-6 left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:bottom-10 md:right-10 z-50 bg-background/90 backdrop-blur-sm rounded-lg shadow-lg p-3 min-w-[280px] max-w-[calc(100vw-3rem)]" style={{ border: '0.1px solid rgba(64, 197, 94, 0.2)', boxShadow: '0 0 15px rgba(34, 197, 94, 0.15), 0 0 30px rgba(34, 197, 94, 0.08)' }}>
+    <div className="fixed bottom-6 left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:bottom-10 md:right-10 z-50 bg-background/90 backdrop-blur-sm rounded-lg shadow-lg p-3 min-w-[280px] max-w-[calc(100vw-3rem)] border border-border">
       <div className="flex items-center gap-3 mb-2">
         <button
           onClick={handleClick}

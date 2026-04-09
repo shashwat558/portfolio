@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@chenglou/pretext": "^0.0.5",
     "@mdx-js/loader": "^3.1.0",
     "@mdx-js/react": "^3.1.0",
     "@next/mdx": "^15.3.1",
@@ -31,9 +32,9 @@
     "lenis": "^1.2.3",
     "lucide-react": "^0.487.0",
     "motion": "^12.7.4",
-    "next": "15.3.0",
+    "next": "^15.5.15",
     "next-themes": "^0.4.6",
-    "nodemailer": "^6.10.1",
+    "nodemailer": "^8.0.5",
     "react": "^19.1.1",
     "react-dom": "^19.0.0",
     "react-icons": "^5.5.0",

@@ -8,6 +8,7 @@ interface Project {
   tech: string[]
   live: string
   source: string
+  image?: string
 }
 
 interface ProjectsProps {
@@ -22,21 +23,27 @@ export default function Projects({ projects }: ProjectsProps) {
   }
 
   return (
-    <section id="projects" className="mb-20">
+    <section
+      id="projects"
+      className="mb-20 relative"
+    >
       <h2 className="text-2xl font-bold mb-6 pb-2 border-b border-border">projects</h2>
 
       <div className="space-y-2">
         {projects.map((project) => {
           const isExpanded = expandedProject === project.name
           return (
-            <div key={project.name} className="border border-border rounded hover:bg-muted/50 transition-colors">
+            <div
+              key={project.name}
+              className="border border-border rounded hover:bg-muted/50 transition-colors relative"
+            >
               <button
                 onClick={() => handleToggle(project.name)}
                 className="w-full px-6 py-4 flex items-center justify-between text-left"
                 aria-expanded={isExpanded}
               >
                 <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 flex-1 min-w-0">
-                  <span className="font-semibold text-base break-words sm:truncate">{project.name}</span>
+                  <span className="font-semibold text-base wrap-break-word sm:truncate">{project.name}</span>
                   <div className="flex flex-wrap gap-2">
                     {project.tech.map((tech) => (
                       <span
@@ -48,7 +55,7 @@ export default function Projects({ projects }: ProjectsProps) {
                     ))}
                   </div>
                 </div>
-                <span className="text-muted-foreground ml-4 flex-shrink-0 transition-transform duration-300">
+                <span className="text-muted-foreground ml-4 shrink-0 transition-transform duration-300">
                   <span className={`inline-block transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`}>
                     {isExpanded ? "−" : "+"}
                   </span>

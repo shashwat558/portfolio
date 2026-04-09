@@ -14,14 +14,17 @@ export default function Hero() {
   return (
     <section className="mb-20">
       <div className="flex flex-col md:flex-row md:items-center xl:gap-2 md:gap-0">
-      <h1 className="text-4xl md:text-5xl font-bold mb-6 flex items-center gap-2">
-        <u className={font.className}>hi, i&apos;m shashwat.</u>
-      </h1>
-      
-      <LiveAge />
+        <h1 className="text-4xl md:text-5xl font-bold mb-6 flex items-center gap-2">
+          <u className={font.className}>hi, i&apos;m shashwat.</u>
+        </h1>
+
+        <LiveAge />
       </div>
+      <p className="text-muted-foreground mb-4">
+        21 &bull; engineer &bull; developer
+      </p>
       <p className="text-lg mb-6">
-         trying to build something cool that people will use and love.
+        trying to build something cool that people will use and love.
       </p>
 
       <p className="text-base mb-8 leading-relaxed">
@@ -29,14 +32,10 @@ export default function Hero() {
         <span className="bg-emerald-300 text-black px-1">
           Next.js, TypeScript, Node.js, PostgreSQL, Redis, and AI-powered workflows
         </span>
-        
+
       </p>
       <p className="text-base mb-8 leading-relaxed">
         trying to learn and implement as much as possible.
-      </p>
-
-      <p className="text-base mb-8 leading-relaxed">
-        i like to build and just do things.
       </p>
 
       <div className="mb-8">
