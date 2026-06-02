@@ -24,14 +24,14 @@ export default function Home() {
       description:
         "Find out what can get you rejected based on your resume and job description using AI insights.",
       tech: ["Next.js", "LangChain", "OpenAI", "Supabase", "TailwindCSS"],
-      live: "https://rejectiongpt.shashwatt.tech",
+      live: "https://rejectiongpt.sshwt.me",
       source: "https://github.com/shashwat558/RejectionGPT",
     },
     {
       name: "Chatterly",
       description: "A real-time chat app with end-to-end encryption, video calling, and high-performance messaging using Redis.",
       tech: ["Next.js", "Redis"],
-      live: "View Live",
+      live: "https://chatterly.sshwt.me",
       source: "Source Code",
     },
     {
@@ -53,7 +53,7 @@ export default function Home() {
       name: "builderOS",
       description: "An all-in-one directory for students and builders to find opportunities, grants, benefits, hackathons, resources, and tools.",
       tech: ["Next.js", "TailwindCSS", "Supabase"],
-      live: "https://build-os-one.vercel.app",
+      live: "https://builder-os.vercel.app",
       source: "Source Code",
     },
     {
