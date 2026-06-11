@@ -47,19 +47,6 @@ const contributions: Contribution[] = [
       },
     ],
   },
-  {
-    organization: "Cal.com",
-    logo: "https://github.com/calcom.png",
-    pullRequests: [
-      {
-        id: "21097",
-        url: "https://github.com/calcom/cal.com/pull/21097",
-        title: "Fix: add missing 'add' in profile username tip",
-        date: "may 2025",
-        type: "bug fix",
-      },
-    ],
-  },
 ]
 
 export default function OpenSource() {
@@ -102,4 +89,3 @@ export default function OpenSource() {
     </section>
   )
 }
-
