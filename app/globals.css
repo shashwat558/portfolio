@@ -167,38 +167,22 @@ html {
   opacity: 1;
 }
 
-::view-transition-group(root) {
-  animation-timing-function: var(--expo-out);
+::view-transition-old(root) {
+  animation: theme-fade-out 0.3s ease forwards;
 }
 
 ::view-transition-new(root) {
-  mask: url('/batman4.png') center center / 0 no-repeat;
-  mask-origin: center center;
-  animation: scale var(--view-transition-duration, 1s), blur-transition var(--view-transition-duration, 1s);
-  animation-fill-mode: both;
+  animation: theme-fade-in 0.3s ease forwards;
 }
 
-::view-transition-old(root),
-.dark::view-transition-old(root) {
-  animation: scale var(--view-transition-duration, 1s), blur-transition var(--view-transition-duration, 1s);
-  animation-fill-mode: both;
-  z-index: -1;
-  transform-origin: center center;
+@keyframes theme-fade-out {
+  from { opacity: 1; }
+  to   { opacity: 0; }
 }
 
-@keyframes scale {
-  to {
-    mask-size: 525vmax;
-  }
-}
-
-@keyframes blur-transition {
-  0%, 100% {
-    filter: blur(0px);
-  }
-  50% {
-    filter: blur(4px);
-  }
+@keyframes theme-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
 
