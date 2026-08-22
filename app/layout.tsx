@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Funnel_Display} from "next/font/google";
+import { headers } from "next/headers";
 import "./globals.css";
 import BackgroundAudio from "@/components/BackgroundAudio";
 import { ThemeProvider } from "next-themes";
-import Script from "next/script";
 
 import { VisibleProvider } from "@/context/VisibleContext";
 
@@ -49,19 +49,22 @@ export const metadata: Metadata = {
   authors: [{ name: "Shashwat jain", url: "https://shashwatt.tech" }],
 };
 
-export default function RootLayout({
+export const dynamic = "force-dynamic";
+
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const nonce = (await headers()).get("x-nonce") ?? undefined;
+
   return (
     <html lang="en">
-      <Script src="https://unpkg.com/oneko@latest/oneko.min.js" strategy="afterInteractive" />
       <body
         className={`${funnelDisplay.className} antialiased bg-white dark:bg-[#000000] scroll-smooth`}
       >
-        
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem nonce={nonce}>
           <BackgroundAudio src="/verdisquo.mp3" loop={true} volume={0.3}>
           <VisibleProvider>
             <LiveCursor />
