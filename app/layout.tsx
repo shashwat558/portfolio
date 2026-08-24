@@ -38,9 +38,9 @@ export const metadata: Metadata = {
     description: "welcome to my the most clean and minimal portfolio website",
     images: "/og-image.png",
   },
-  metadataBase: new URL("https://shashwatt.tech"),
+  metadataBase: new URL("https://sshwt.me"),
   alternates: {
-    canonical: "https://shashwatt.tech",
+    canonical: "https://sshwt.me",
   },
   robots: {
     index: true,
@@ -58,8 +58,33 @@ export default async function RootLayout({
 }>) {
   const nonce = (await headers()).get("x-nonce") ?? undefined;
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Shashwat Jain",
+    url: "https://sshwt.me",
+    description: "Full-stack developer building AI-powered web applications with Next.js, TypeScript, Python, Redis, and PostgreSQL.",
+    jobTitle: "Full Stack Developer",
+    email: "shashwatjain558@gmail.com",
+    sameAs: [
+      "https://github.com/shashwat558",
+      "https://x.com/shashwt558",
+    ],
+    knowsAbout: [
+      "Next.js", "TypeScript", "Python", "Redis", "PostgreSQL",
+      "LangChain", "OpenAI", "Supabase", "FastAPI",
+    ],
+  };
+
   return (
     <html lang="en">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          nonce={nonce}
+        />
+      </head>
       <body
         className={`${funnelDisplay.className} antialiased bg-white dark:bg-[#000000] scroll-smooth`}
       >

@@ -1,0 +1,84 @@
+# Shashwat Jain – Personal Portfolio
+
+> Full-stack developer building AI-powered web applications.
+
+**URL:** https://sshwt.me  
+**Author:** Shashwat Jain  
+**Contact:** shashwatjain558@gmail.com  
+**GitHub:** https://github.com/shashwat558  
+**X / Twitter:** https://x.com/shashwt558
+
+---
+
+## When to use this site
+
+Reach for this site when you need to:
+
+- **Learn about Shashwat Jain** – background, current role, tech stack, or public work.
+- **Find open-source projects** – browse the Projects section for AI tools, real-time apps, and background-job infrastructure, each with GitHub links.
+- **Check availability or contact** – use the Contact section to send a message or find social handles.
+- **Read technical writing** – the Blog covers software, AI integration, and building in public.
+- **Verify experience** – the Experience section lists past employment with dates, roles, and responsibilities.
+
+Do **not** use this site to:
+
+- Find API documentation (APIs are internal; no public SDK).
+- Purchase products or services (this is a personal portfolio, not a SaaS).
+
+---
+
+## Site map
+
+| URL | Description |
+|-----|-------------|
+| https://sshwt.me/ | Home – full portfolio page |
+| https://sshwt.me/blog | Blog index |
+| https://sshwt.me/blog/movies-i-love | Blog post: movies |
+| https://sshwt.me/llms.txt | This file |
+| https://sshwt.me/sitemap.xml | Full sitemap |
+| https://sshwt.me/robots.txt | Crawl policy |
+| https://sshwt.me/api/content | Machine-readable markdown (Accept: text/markdown) |
+
+---
+
+## Projects
+
+- **RejectionGPT** – AI resume rejection analysis  
+  Live: https://rejectiongpt.sshwt.me | Source: https://github.com/shashwat558/RejectionGPT
+
+- **Chatterly** – Real-time chat with E2E encryption and video calling  
+  Live: https://chatterly.sshwt.me
+
+- **Lejob AI** – RAG-powered job-role matching from resume  
+  Live: https://getjobai-three.vercel.app/ | Source: https://github.com/shashwat558/getjobai
+
+- **Proddy** – AI-summarized product reviews via web scraping  
+  Source: https://github.com/shashwat558/know-your-product
+
+- **Background Job Queue** – FastAPI + Redis distributed task processor  
+  Source: https://github.com/shashwat558/background-job-queue
+
+- **builderOS** – Student builders directory (grants, hackathons, tools)  
+  Live: https://builder-os.vercel.app
+
+- **Buildtogether** – Project showcase + collaboration platform  
+  Live: https://buildtogether.vercel.app | Source: https://github.com/shashwat558/buildtogether
+
+---
+
+## Technical skills
+
+Next.js · TypeScript · React · Python · FastAPI · PostgreSQL · Redis · Prisma · Supabase · LangChain · OpenAI · Gemini · Puppeteer · WebSockets · TailwindCSS
+
+---
+
+## How an agent should call this content
+
+For machine-readable text, send `Accept: text/markdown` to:
+
+```
+GET https://sshwt.me/api/content
+Accept: text/markdown
+```
+
+The response is `Content-Type: text/markdown` with `Vary: Accept, Accept-Encoding`.
