@@ -20,6 +20,21 @@ export default function Home() {
   const projects = [
 
     {
+      name: "Diagnost AI",
+      description:
+        "Production analytics and self-improvement platform for AI agents with observability, failure clustering, and auto-remediation workflows.",
+      tech: ["Next.js", "Fastify", "PostgreSQL", "ClickHouse", "Redpanda", "Python"],
+      live: "Source Code",
+      source: "https://github.com/shashwat558/diagnost-ai",
+    },
+    {
+      name: "Background job queue worker system",
+      description: "A robust background job processing system built with FastAPI and Redis for handling asynchronous tasks and distributed work queues.",
+      tech: ["FastAPI", "PostgreSQL", "Redis", "Python"],
+      live: "Source Code",
+      source: "https://github.com/shashwat558/background-job-queue",
+    },
+    {
       name: "RejectionGPT",
       description:
         "Find out what can get you rejected based on your resume and job description using AI insights.",
@@ -33,21 +48,6 @@ export default function Home() {
       tech: ["Next.js", "Redis"],
       live: "https://chatterly.sshwt.me",
       source: "Source Code",
-    },
-    {
-      name: "Background job queue worker system",
-      description: "A robust background job processing system built with FastAPI and Redis for handling asynchronous tasks and distributed work queues.",
-      tech: ["FastAPI", "PostgreSQL", "Redis", "Python"],
-      live: "Source Code",
-      source: "https://github.com/shashwat558/background-job-queue",
-    },
-    {
-      name: "Diagnost AI",
-      description:
-        "Production analytics and self-improvement platform for AI agents with observability, failure clustering, and auto-remediation workflows.",
-      tech: ["Next.js", "Fastify", "PostgreSQL", "ClickHouse", "Redpanda", "Python"],
-      live: "Source Code",
-      source: "https://github.com/shashwat558/diagnost-ai",
     },
     {
       name: "builderOS",
