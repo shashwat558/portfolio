@@ -42,12 +42,12 @@ export default function Home() {
       source: "https://github.com/shashwat558/background-job-queue",
     },
     {
-      name: "Proddy",
+      name: "Diagnost AI",
       description:
-        "Web-scrapes Myntra product reviews and gives AI-summarized feedback to help users make quick purchase decisions.",
-      tech: ["Next.js", "Gemini", "Puppeteer.js", "LangChain", "OpenAI"],
-      live: "View Live",
-      source: "https://github.com/shashwat558/know-your-product",
+        "Production analytics and self-improvement platform for AI agents with observability, failure clustering, and auto-remediation workflows.",
+      tech: ["Next.js", "Fastify", "PostgreSQL", "ClickHouse", "Redpanda", "Python"],
+      live: "Source Code",
+      source: "https://github.com/shashwat558/diagnost-ai",
     },
     {
       name: "builderOS",
