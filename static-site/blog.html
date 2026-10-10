@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>blog — Shashwat jain</title>
+  <meta name="description" content="just writing my raw thoughts and stuff i think about..." />
+  <link rel="icon" href="assets/favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script>
+    try {
+      var saved = localStorage.getItem("theme");
+      if (saved === "dark") document.documentElement.classList.add("dark");
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <div class="blog-wrap">
+    <a href="index.html" class="back-link"><span>←</span><span>home</span></a>
+    <h1 class="blog-title">just writing my raw thoughts and stuff i think about...</h1>
+    <ul class="blog-list">
+      <li><span class="blog-dot"></span><span class="blog-post-title">movies everyone should watch....</span></li>
+    </ul>
+    <p class="sm muted" style="margin-top:32px">Full blog posts live in the Next.js app (<code>/blog/movies-i-love</code>) — not ported to this static copy yet.</p>
+  </div>
+  <footer class="footer"><p>© 2025 shashwat jain. all rights reserved.</p></footer>
+</body>
+</html>

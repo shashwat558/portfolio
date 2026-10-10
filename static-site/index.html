@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shashwat jain</title>
+  <meta name="description" content="welcome to my the most clean and minimal portfolio website" />
+  <link rel="icon" href="assets/favicon.ico" />
+  <meta property="og:title" content="shashwat jain" />
+  <meta property="og:description" content="welcome to my the most clean and minimal portfolio website" />
+  <meta property="og:image" content="assets/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="shashwat jain" />
+  <meta name="twitter:description" content="welcome to my the most clean and minimal portfolio website" />
+  <meta name="twitter:image" content="assets/og-image.png" />
+  <link rel="canonical" href="https://sshwt.me" />
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Person","name":"Shashwat Jain","url":"https://sshwt.me","description":"Full-stack developer building AI-powered web applications with Next.js, TypeScript, Python, Redis, and PostgreSQL.","jobTitle":"Full Stack Developer","email":"shashwatjain558@gmail.com","sameAs":["https://github.com/shashwat558","https://x.com/shashwt558"],"knowsAbout":["Next.js","TypeScript","Python","Redis","PostgreSQL","LangChain","OpenAI","Supabase","FastAPI"]}
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Fugaz+One&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script>
+    // Avoid theme flash: default light, respect saved choice
+    try {
+      var saved = localStorage.getItem("theme");
+      if (saved === "dark") document.documentElement.classList.add("dark");
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="logo">shashwat.</div>
+      <div class="nav-right">
+        <button id="eyeBtn" class="icon-btn" aria-label="Show visitors" title="Live cursors need the Next.js + Firebase backend">
+          <svg id="eyeOpenIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+          <svg id="eyeOffIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/><path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/><path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/><line x1="2" x2="22" y1="2" y2="22"/></svg>
+        </button>
+        <button id="themeBtn" class="icon-btn" aria-label="Toggle theme">
+          <svg id="moonIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+          <svg id="sunIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+        </button>
+        <div class="nav-links">
+          <a href="#about">about</a>
+          <a href="#experience">experience</a>
+          <a href="#projects">projects</a>
+          <a href="#open-source">open source</a>
+          <a href="#things-i-can-do">Things I Can Do</a>
+          <a href="blog.html" class="pill-btn">blogs</a>
+        </div>
+        <button id="menuBtn" class="icon-btn menu-btn" aria-label="Toggle menu" aria-expanded="false">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+    </div>
+    <div id="mobileMenu" class="mobile-menu" hidden>
+      <div class="mobile-card">
+        <a href="#about">about</a>
+        <a href="#experience">experience</a>
+        <a href="#projects">projects</a>
+        <a href="#open-source">open source</a>
+        <a href="#contact">contact</a>
+        <a href="blog.html" class="pill-btn pill-center">blogs</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="page">
+    <div class="banner">
+      <img src="assets/banner3.png" alt="Banner" />
+    </div>
+
+    <!-- ABOUT / HERO -->
+    <section id="about" class="section hero">
+      <div class="hero-top">
+        <h1 class="hero-title"><u class="fugaz">hi, i'm shashwat.</u></h1>
+        <span class="live-age">been here for <span id="liveAge" class="live-age-num">21.000000000</span> years</span>
+      </div>
+      <p class="muted mb-4">21 &bull; engineer &bull; developer</p>
+      <p class="big mb-6">trying to build something cool that people will use and love.</p>
+      <p class="mb-8 leading">i know <span class="hl">Next.js, TypeScript, Node.js, PostgreSQL, Redis, and AI-powered workflows</span></p>
+      <p class="mb-8 leading">trying to learn and implement as much as possible.</p>
+      <div class="mb-8">
+        <p class="bold mb-3"><span class="hl">connect with me:</span></p>
+        <p class="sm">
+          <a href="https://github.com/shashwat558">github</a> &bull;
+          <a href="https://www.linkedin.com/in/shashwat-jain-8b2b3127a/">linkedin</a> &bull;
+          <a href="https://twitter.com/shashwatj26">twitter</a>
+        </p>
+      </div>
+      <div>
+        <p class="sm"><span class="bold">email:</span> <a href="mailto:jainshashwat528@gmail.com">jainshashwat528@gmail.com</a></p>
+        <p class="sm"><span class="bold">wanna chat?</span> <a href="https://cal.com/shashwat-jain-qyhfub/let-s-talk">let's talk</a></p>
+      </div>
+    </section>
+
+    <!-- NOW PLAYING (static snapshot; live Spotify needs the Next.js API route) -->
+    <div class="now-playing">
+      <img src="assets/spotify.png" alt="Spotify" width="48" height="48" />
+      <div class="np-text">
+        <p class="sm">Not playing right now</p>
+        <p class="xs muted">Spotify status</p>
+      </div>
+    </div>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="section">
+      <h2 class="section-title">experience</h2>
+      <div class="exp-item">
+        <p class="xs muted mb-1">April 2025 - July 2025</p>
+        <h3 class="exp-role">Full Stack Developer</h3>
+        <p class="sm muted mb-2">DremaAI</p>
+        <p class="sm leading">Contributed to multiple client projects, building responsive and scalable web applications using Next.js and React. Ensured clean, maintainable code and smooth user experiences.</p>
+      </div>
+    </section>
+
+    <!-- OPEN SOURCE -->
+    <section id="open-source" class="section">
+      <h2 class="section-title">open source contributions</h2>
+      <div class="os-org">
+        <div class="os-head">
+          <img src="https://github.com/dodopayments.png" alt="Dodo Payments logo" width="32" height="32" class="avatar" />
+          <h3 class="exp-role">Dodo Payments</h3>
+        </div>
+        <ul class="os-list">
+          <li><span class="muted">sep 2025 (feature):</span> <a href="https://github.com/dodopayments/billingsdk/pull/221" target="_blank" rel="noopener noreferrer">Added Stripe integration for Next.js</a> <span class="xs muted">[#221]</span></li>
+          <li><span class="muted">sep 2025 (feature):</span> <a href="https://github.com/dodopayments/billingsdk/pull/191" target="_blank" rel="noopener noreferrer">Added Stripe integration for Express framework</a> <span class="xs muted">[#191]</span></li>
+          <li><span class="muted">jul 2025 (feature):</span> <a href="https://github.com/dodopayments/billingsdk/pull/137" target="_blank" rel="noopener noreferrer">Added React.js template with useBilling hook</a> <span class="xs muted">[#137]</span></li>
+          <li><span class="muted">jun 2025 (feature):</span> <a href="https://github.com/dodopayments/billingsdk/pull/124" target="_blank" rel="noopener noreferrer">Added BillingSetting component with demo</a> <span class="xs muted">[#124]</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section">
+      <h2 class="section-title">projects</h2>
+      <div class="projects">
+        <div class="project">
+          <button class="project-btn" aria-expanded="false"><span class="project-head"><span class="project-name">RejectionGPT</span><span class="tags"><span class="tag">Next.js</span><span class="tag">LangChain</span><span class="tag">OpenAI</span><span class="tag">Supabase</span><span class="tag">TailwindCSS</span></span></span><span class="plus">+</span></button>
+          <div class="project-content"><div class="project-body"><p class="sm muted leading mb-3">Find out what can get you rejected based on your resume and job description using AI insights.</p><div class="links"><a href="https://rejectiongpt.sshwt.me" target="_blank" rel="noopener noreferrer">View Live</a><a href="https://github.com/shashwat558/RejectionGPT" target="_blank" rel="noopener noreferrer">Source Code</a></div></div></div>
+        </div>
+        <div class="project">
+          <button class="project-btn" aria-expanded="false"><span class="project-head"><span class="project-name">Chatterly</span><span class="tags"><span class="tag">Next.js</span><span class="tag">Redis</span></span></span><span class="plus">+</span></button>
+          <div class="project-content"><div class="project-body"><p class="sm muted leading mb-3">A real-time chat app with end-to-end encryption, video calling, and high-performance messaging using Redis.</p><div class="links"><a href="https://chatterly.sshwt.me" target="_blank" rel="noopener noreferrer">View Live</a><a href="#" title="Source not public">Source Code</a></div></div></div>
+        </div>
+        <div class="project">
+          <button class="project-btn" aria-expanded="false"><span class="project-head"><span class="project-name">Background job queue worker system</span><span class="tags"><span class="tag">FastAPI</span><span class="tag">PostgreSQL</span><span class="tag">Redis</span><span class="tag">Python</span></span></span><span class="plus">+</span></button>
+          <div class="project-content"><div class="project-body"><p class="sm muted leading mb-3">A robust background job processing system built with FastAPI and Redis for handling asynchronous tasks and distributed work queues.</p><div class="links"><a href="#" title="Source not public">View Live</a><a href="https://github.com/shashwat558/background-job-queue" target="_blank" rel="noopener noreferrer">Source Code</a></div></div></div>
+        </div>
+        <div class="project">
+          <button class="project-btn" aria-expanded="false"><span class="project-head"><span class="project-name">Proddy</span><span class="tags"><span class="tag">Next.js</span><span class="tag">Gemini</span><span class="tag">Puppeteer.js</span><span class="tag">LangChain</span><span class="tag">OpenAI</span></span></span><span class="plus">+</span></button>
+          <div class="project-content"><div class="project-body"><p class="sm muted leading mb-3">Web-scrapes Myntra product reviews and gives AI-summarized feedback to help users make quick purchase decisions.</p><div class="links"><a href="#" title="Demo not public">View Live</a><a href="https://github.com/shashwat558/know-your-product" target="_blank" rel="noopener noreferrer">Source Code</a></div></div></div>
+        </div>
+        <div class="project">
+          <button class="project-btn" aria-expanded="false"><span class="project-head"><span class="project-name">builderOS</span><span class="tags"><span class="tag">Next.js</span><span class="tag">TailwindCSS</span><span class="tag">Supabase</span></span></span><span class="plus">+</span></button>
+          <div class="project-content"><div class="project-body"><p class="sm muted leading mb-3">An all-in-one directory for students and builders to find opportunities, grants, benefits, hackathons, resources, and tools.</p><div class="links"><a href="https://builder-os.vercel.app" target="_blank" rel="noopener noreferrer">View Live</a><a href="#" title="Source not public">Source Code</a></div></div></div>
+        </div>
+        <div class="project">
+          <button class="project-btn" aria-expanded="false"><span class="project-head"><span class="project-name">Lejob AI</span><span class="tags"><span class="tag">Next.js</span><span class="tag">Gemini</span><span class="tag">LangChain</span><span class="tag">Supabase</span></span></span><span class="plus">+</span></button>
+          <div class="project-content"><div class="project-body"><p class="sm muted leading mb-3">Lejob helps you find the most suitable job roles based on your resume using RAG-powered AI search.</p><div class="links"><a href="https://getjobai-three.vercel.app/" target="_blank" rel="noopener noreferrer">View Live</a><a href="https://github.com/shashwat558/getjobai" target="_blank" rel="noopener noreferrer">Source Code</a></div></div></div>
+        </div>
+        <div class="project">
+          <button class="project-btn" aria-expanded="false"><span class="project-head"><span class="project-name">Buildtogether</span><span class="tags"><span class="tag">Next.js</span><span class="tag">WebSockets</span><span class="tag">Redis</span><span class="tag">Prisma</span></span></span><span class="plus">+</span></button>
+          <div class="project-content"><div class="project-body"><p class="sm muted leading mb-3">A platform where students can showcase their projects, discover what their peers are building, and collaborate with them.</p><div class="links"><a href="https://buildtogether.vercel.app" target="_blank" rel="noopener noreferrer">View Live</a><a href="https://github.com/shashwat558/buildtogether" target="_blank" rel="noopener noreferrer">Source Code</a></div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="section">
+      <h2 class="section-title">technical skills</h2>
+      <div class="skills">
+        <div><h3 class="bold mb-3">Frontend</h3><ul class="muted sm skill-list"><li>• Next.js &amp; React</li><li>• TypeScript</li><li>• Tailwind CSS</li></ul></div>
+        <div><h3 class="bold mb-3">Backend</h3><ul class="muted sm skill-list"><li>• Node.js &amp; Python</li><li>• PostgreSQL</li><li>• Redis &amp; Caching</li></ul></div>
+        <div><h3 class="bold mb-3">DevOps</h3><ul class="muted sm skill-list"><li>• Docker &amp; Kubernetes</li><li>• CI/CD Pipelines</li><li>• Cloud Infrastructure</li></ul></div>
+        <div><h3 class="bold mb-3">Tools &amp; Platforms</h3><ul class="muted sm skill-list"><li>• Git &amp; GitHub</li><li>• AWS &amp; Vercel</li><li>• Linux &amp; Command Line</li></ul></div>
+      </div>
+    </section>
+
+    <!-- THINGS I CAN DO -->
+    <section id="things-i-can-do" class="section">
+      <h2 class="section-title">things i can do</h2>
+      <ul class="todo">
+        <li><span class="dot"></span><span>I can build scalable full stack apps</span></li>
+        <li><span class="dot"></span><span>I can build beautiful UIs</span></li>
+        <li><span class="dot"></span><span>I can build scalable frontends</span></li>
+        <li><span class="dot"></span><span>I can build AI agents</span></li>
+        <li><span class="dot"></span><span>I can integrate smart contracts</span></li>
+        <li><span class="dot"></span><span>I can code backends</span></li>
+        <li><span class="dot"></span><span>i can swim</span></li>
+        <li><span class="dot"></span><span>i can drown</span></li>
+      </ul>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section contact">
+      <h2 class="section-title">let's connect</h2>
+      <p class="muted mb-6">i'm always open to interesting conversations and collaborations. feel free to reach out!</p>
+      <div class="sm contact-list">
+        <p><span class="bold">email:</span> <a target="_blank" href="mailto:jainshashwat528@gmail.com">jainshashwat528@gmail.com</a></p>
+        <p><span class="bold">github:</span> <a target="_blank" href="https://github.com/shashwat558">github.com/shashwat558</a></p>
+        <p><span class="bold">linkedin:</span> <a target="_blank" href="https://www.linkedin.com/in/shashwat-jain-8b2b3127a/">linkedin.com/in/shashwat-jain-8b2b3127a</a></p>
+        <p><span class="bold">discord:</span> <a target="_blank" href="https://discord.com/users/1184081224847855689">shashwatt.</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer"><p>© 2025 shashwat jain. all rights reserved.</p></footer>
+
+  <!-- AUDIO -->
+  <audio id="bgAudio" src="assets/verdisquo.mp3" loop preload="auto"></audio>
+  <div class="player">
+    <button id="playBtn" class="play-btn" aria-label="Play" type="button">
+      <svg id="playIcon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+      <svg id="pauseIcon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="display:none"><rect x="5" y="4" width="4" height="16" rx="1"/><rect x="15" y="4" width="4" height="16" rx="1"/></svg>
+    </button>
+    <div class="player-main">
+      <p class="xs bold truncate">Veridis Quo - Daft Punk</p>
+      <div class="progress-row">
+        <span id="curTime" class="xs muted">0:00</span>
+        <div class="track"><div id="prog" class="fill"></div></div>
+        <span id="durTime" class="xs muted">0:00</span>
+      </div>
+    </div>
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="muted"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+  </div>
+
+  <div id="toast" class="toast" hidden></div>
+
+  <script src="script.js"></script>
+  <script src="assets/oneko.js" data-cat="assets/oneko.gif"></script>
+</body>
+</html>
